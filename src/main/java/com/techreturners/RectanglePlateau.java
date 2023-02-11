@@ -4,6 +4,8 @@ public class RectanglePlateau extends Plateau{
 
 
     public RectanglePlateau(int x,int y) {
-        super.setGrid(new int[x][y]);
+        super.setGrid(new Object[x][y]);
     }
+
+
 }

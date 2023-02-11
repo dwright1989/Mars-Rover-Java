@@ -1,17 +1,23 @@
 package com.techreturners;
 
+import java.util.ArrayList;
+
 public class Plateau {
 
-    //public ArrayList<Vehicle> vehicles;
+    public ArrayList<Vehicle> vehicles;
     //public ArrayList<Obstacles> obstacles;
-    private int[][] grid;
+    private Object[][] grid;
 
-    public int[][] getGrid() {
+    public Object[][] getGrid() {
         return grid;
     }
 
-    public void setGrid(int[][] grid) {
+    public void setGrid(Object[][] grid) {
         this.grid = grid;
+    }
+
+    public void addVehicle(Rover rover) {
+
     }
 
 }
