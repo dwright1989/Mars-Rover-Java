@@ -28,5 +28,13 @@ public class RectanglePlateauTest {
         assertNull(rectanglePlateau.getGrid()[0][0]);
     }
 
+    @Test
+    public void canRemoveVehicleFromGrid(){
+        Rover rover = new Rover(new int[] {0,1}, Direction.N);
+        rectanglePlateau.addVehicle(rover);
+        rectanglePlateau.removeVehicle(rover);
+        assertNull(rectanglePlateau.getGrid()[0][1]);
+    }
+
 
 }
