@@ -1,9 +1,9 @@
 package com.techreturners;
 
-public class RectanglePlateau {
+public class RectanglePlateau extends Plateau{
 
 
     public RectanglePlateau(int x,int y) {
-        // Generate Grid
+        super.setGrid(new int[x][y]);
     }
 }
