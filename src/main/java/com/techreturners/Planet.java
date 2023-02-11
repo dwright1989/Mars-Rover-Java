@@ -18,13 +18,18 @@ public class Planet {
         this.gravity = gravity;
     }
 
+    public ArrayList<Plateau> getPlateaus() {
+        return plateaus;
+    }
+
     public void addPlateau(RectanglePlateau rectanglePlateau) {
         plateaus.add(rectanglePlateau);
     }
 
-
-    public ArrayList<Plateau> getPlateaus() {
-        return plateaus;
+    public void removePlateau(RectanglePlateau rectanglePlateau) {
+        plateaus.remove(rectanglePlateau);
     }
+
+
 
 }

@@ -6,7 +6,6 @@ public class Plateau {
     //public ArrayList<Obstacles> obstacles;
     private int[][] grid;
 
-
     public int[][] getGrid() {
         return grid;
     }
@@ -14,4 +13,5 @@ public class Plateau {
     public void setGrid(int[][] grid) {
         this.grid = grid;
     }
+
 }

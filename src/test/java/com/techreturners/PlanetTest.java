@@ -3,7 +3,7 @@ package com.techreturners;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class PlanetTest {
 
@@ -19,5 +19,13 @@ public class PlanetTest {
         RectanglePlateau rectanglePlateau = new RectanglePlateau(1,3);
         mars.addPlateau(rectanglePlateau);
         assertNotNull(mars.getPlateaus());
+    }
+
+    @Test
+    public void canRemovePlateauFromPlanet(){
+        RectanglePlateau rectanglePlateau = new RectanglePlateau(1,3);
+        mars.addPlateau(rectanglePlateau);
+        mars.removePlateau(rectanglePlateau);
+        assertEquals(0, mars.getPlateaus().size());
     }
 }
