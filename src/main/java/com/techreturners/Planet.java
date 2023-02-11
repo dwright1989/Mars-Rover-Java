@@ -1,11 +1,15 @@
 package com.techreturners;
 
+import java.util.ArrayList;
+
 public class Planet {
 
     final String name;
     final double temperature;
     final double radius;
     final double gravity;
+
+    private ArrayList<Plateau> plateaus = new ArrayList<Plateau>();
 
     public Planet(String name, double temperature, double radius, double gravity) {
         this.name = name;
@@ -14,10 +18,13 @@ public class Planet {
         this.gravity = gravity;
     }
 
-    //public ArrayList<Plateau> plateaus;
+    public void addPlateau(RectanglePlateau rectanglePlateau) {
+        plateaus.add(rectanglePlateau);
+    }
 
 
-
-
+    public ArrayList<Plateau> getPlateaus() {
+        return plateaus;
+    }
 
 }

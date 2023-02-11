@@ -19,9 +19,5 @@ public class RectanglePlateauTest {
         assertNotNull(rectanglePlateau.getGrid());
     }
 
-    @Test
-    public void canAddPlateauToPlanet(){
-
-    }
 
 }
