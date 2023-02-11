@@ -13,7 +13,7 @@ public class RectanglePlateauTest {
 
     @BeforeEach
     public void setUp(){
-        rectanglePlateau = new RectanglePlateau(1,3);
+        rectanglePlateau = new RectanglePlateau(5,5);
     }
     @Test
     public void canCreateRectanglePlateauWithGrid(){
@@ -22,10 +22,11 @@ public class RectanglePlateauTest {
 
     @Test
     public void canAddVehicleToGrid(){
-        Rover rover = new Rover(new int[] {0,1}, Direction.N);
+        Rover rover = new Rover(new int[] {2,3}, Direction.N);
         rectanglePlateau.addVehicle(rover);
-        assertNotNull(rectanglePlateau.getGrid()[0][1]);
+        assertNotNull(rectanglePlateau.getGrid()[3][2]);
         assertNull(rectanglePlateau.getGrid()[0][0]);
+        rectanglePlateau.printGrid();
     }
 
     @Test
