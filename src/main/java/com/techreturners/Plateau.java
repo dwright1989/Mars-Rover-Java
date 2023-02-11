@@ -1,11 +1,9 @@
 package com.techreturners;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Plateau {
-
-    public ArrayList<Vehicle> vehicles;
-    //public ArrayList<Obstacles> obstacles;
     private Object[][] grid;
 
     public Object[][] getGrid() {
@@ -17,7 +15,13 @@ public class Plateau {
     }
 
     public void addVehicle(Rover rover) {
+        int x = rover.getPosition()[0];
+        int y = rover.getPosition()[1];
+        grid[x][y] = rover;
+    }
 
+    public void printGrid(){
+        System.out.println(Arrays.deepToString(grid));
     }
 
 }
