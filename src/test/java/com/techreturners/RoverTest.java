@@ -20,7 +20,7 @@ public class RoverTest {
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
         assertArrayEquals(new int[]{2,4}, rover.getPosition());
-        assertEquals(rectanglePlateau.getGrid()[4][2], rover); // Access reversed
+        assertEquals(rectanglePlateau.getGrid()[2][4], rover);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class RoverTest {
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
         assertArrayEquals(new int[]{2,4}, rover.getPosition());
-        assertEquals(rectanglePlateau.getGrid()[4][2], rover); // Access reversed
+        assertEquals(rectanglePlateau.getGrid()[2][4], rover);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class RoverTest {
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
         assertArrayEquals(new int[]{3,3}, rover.getPosition());
-        assertEquals(rectanglePlateau.getGrid()[3][3], rover); // Access reversed
+        assertEquals(rectanglePlateau.getGrid()[3][3], rover);
     }
 
     @Test
@@ -50,7 +50,7 @@ public class RoverTest {
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
         assertArrayEquals(new int[]{4,3}, rover.getPosition());
-        assertEquals(rectanglePlateau.getGrid()[3][4], rover); // Access reversed
+        assertEquals(rectanglePlateau.getGrid()[4][3], rover);
     }
 
     @Test
@@ -60,7 +60,7 @@ public class RoverTest {
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
         assertArrayEquals(new int[]{0,1}, rover.getPosition());
-        assertEquals(rectanglePlateau.getGrid()[1][0], rover); // Access reversed
+        assertEquals(rectanglePlateau.getGrid()[0][1], rover);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class RoverTest {
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
         assertArrayEquals(new int[]{0,1}, rover.getPosition());
-        assertEquals(rectanglePlateau.getGrid()[1][0], rover); // Access reversed
+        assertEquals(rectanglePlateau.getGrid()[0][1], rover);
     }
 
     @Test
@@ -80,7 +80,7 @@ public class RoverTest {
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
         assertArrayEquals(new int[]{0,0}, rover.getPosition());
-        assertEquals(rectanglePlateau.getGrid()[0][0], rover); // Access reversed
+        assertEquals(rectanglePlateau.getGrid()[0][0], rover);
     }
 
     @Test
@@ -90,7 +90,7 @@ public class RoverTest {
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
         assertArrayEquals(new int[]{0,0}, rover.getPosition());
-        assertEquals(rectanglePlateau.getGrid()[0][0], rover); // Access reversed
+        assertEquals(rectanglePlateau.getGrid()[0][0], rover);
     }
 
 

@@ -24,7 +24,7 @@ public class RectanglePlateauTest {
     public void canAddVehicleToGrid(){
         Rover rover = new Rover(new int[] {2,3}, Direction.N);
         rectanglePlateau.addVehicle(rover);
-        assertNotNull(rectanglePlateau.getGrid()[3][2]);
+        assertNotNull(rectanglePlateau.getGrid()[2][3]);
         assertNull(rectanglePlateau.getGrid()[0][0]);
         rectanglePlateau.printGrid();
     }
@@ -35,6 +35,13 @@ public class RectanglePlateauTest {
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.removeVehicle(rover);
         assertNull(rectanglePlateau.getGrid()[0][1]);
+    }
+
+    @Test
+    public void testPrintingGrid(){
+        Rover rover = new Rover(new int[] {2,4}, Direction.N);
+        rectanglePlateau.addVehicle(rover);
+        rectanglePlateau.printGrid();
     }
 
 

@@ -23,11 +23,11 @@ public class Rover extends Vehicle {
     public String moveForward(Object[][] grid) {
         boolean canMove = false;
         int[] newPosition = getNewPosition();
-        int x = getNewPosition()[0];
-        int y = getNewPosition()[1];
+        int y = getNewPosition()[0];
+        int x = getNewPosition()[1];
         int lengthOne = grid.length;
         int lengthTwo = grid[0].length;
-        if(x<lengthOne && x>=0 && y<lengthTwo && y>=0){ // TODO Method may need to be updated if/when obstacles added
+        if(y<lengthOne && y>=0 && x<lengthTwo && x>=0){ // TODO Method may need to be updated if/when obstacles added
             canMove = true;
         }
         if(canMove){
