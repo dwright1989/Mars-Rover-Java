@@ -49,5 +49,5 @@ public abstract class Vehicle {
         return updatedPosition;
     }*/
 
-   abstract void moveForward();
+    abstract String moveForward(Object[][] grid);
 }
