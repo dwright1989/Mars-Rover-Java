@@ -20,7 +20,7 @@ public class Rover extends Vehicle {
     }
 
     @Override
-    public String moveForward(Object[][] grid) {
+    public boolean moveForward(Object[][] grid) {
         boolean canMove = false;
         int[] newPosition = getNewPosition();
         int y = getNewPosition()[0];
@@ -32,9 +32,9 @@ public class Rover extends Vehicle {
         }
         if(canMove){
             setPosition(newPosition);
-            return "Vehicle has been successfully moved.";
+            return canMove;
         }else{
-            return "This is an invalid move, no space. Try again";
+            return canMove;
         }
 
     }

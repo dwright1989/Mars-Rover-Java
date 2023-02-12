@@ -6,9 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;
 
-
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RectanglePlateauTest {
 
@@ -36,8 +34,19 @@ public class RectanglePlateauTest {
     public void canRemoveVehicleFromGrid(){
         Rover rover = new Rover(new int[] {0,1}, Direction.N);
         rectanglePlateau.addVehicle(rover);
-        rectanglePlateau.removeVehicle(rover);
+        rectanglePlateau.removeVehicle(rover.getPosition(), rover.getSize());
         assertNull(rectanglePlateau.getGrid()[0][1]);
+    }
+
+    @Test
+    public void canMoveVehicleOneSpaceToTheLeft(){
+        Rover rover = new Rover(new int[]{2, 3}, Direction.N);
+        rectanglePlateau.addVehicle(rover);
+        assertEquals("13W", rectanglePlateau.moveVehicle("LM", rover));
+        assertEquals(Direction.W, rover.getDirection());
+        assertArrayEquals(new int[]{1, 3}, rover.getPosition());
+        assertNotNull(rectanglePlateau.getGrid()[1][3]);
+        assertNull(rectanglePlateau.getGrid()[2][3]);
     }
 
     @Test

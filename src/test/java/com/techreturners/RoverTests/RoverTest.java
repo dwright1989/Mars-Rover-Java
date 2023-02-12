@@ -26,17 +26,4 @@ public class RoverTest {
     }
 
 
-
-    /*@Test
-    public void canMoveRoverOneSpaceToTheLeft(){
-        RectanglePlateau rectanglePlateau = new RectanglePlateau(5,5);
-        Rover rover = new Rover(new int[]{2, 3}, Direction.N);
-        rectanglePlateau.addVehicle(rover);
-
-        assertEquals("13W", rover.move("LM"));
-        //assertEquals(Direction.W, rover.getDirection());
-       // assertArrayEquals(new int[]{1, 3}, rover.getPosition());
-       // assertNotNull(rectanglePlateau.getGrid()[1][3]);
-        //assertNull(rectanglePlateau.getGrid()[2][3]);
-    }*/
 }

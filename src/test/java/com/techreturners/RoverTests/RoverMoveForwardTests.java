@@ -22,7 +22,7 @@ public class RoverMoveForwardTests {
     public void canMoveForwardWhenFacingNorthAndSpaceAvailable(){
         Rover rover = new Rover(new int[]{2,3}, Direction.N);
         rectanglePlateau.addVehicle(rover);
-        rectanglePlateau.moveVehicle(rover);
+        rectanglePlateau.moveVehicleForward(rover);
         assertArrayEquals(new int[]{2,4}, rover.getPosition());
         assertEquals(rectanglePlateau.getGrid()[2][4], rover);
     }
@@ -31,7 +31,7 @@ public class RoverMoveForwardTests {
     public void roverStaysInTheSamePlaceIfNoSpaceAvailableFacingNorth(){
         Rover rover = new Rover(new int[]{2,4}, Direction.N);
         rectanglePlateau.addVehicle(rover);
-        rectanglePlateau.moveVehicle(rover);
+        rectanglePlateau.moveVehicleForward(rover);
         assertArrayEquals(new int[]{2,4}, rover.getPosition());
         assertEquals(rectanglePlateau.getGrid()[2][4], rover);
     }
@@ -40,7 +40,7 @@ public class RoverMoveForwardTests {
     public void canMoveForwardWhenFacingEastAndSpaceAvailable(){
         Rover rover = new Rover(new int[]{2,3}, Direction.E);
         rectanglePlateau.addVehicle(rover);
-        rectanglePlateau.moveVehicle(rover);
+        rectanglePlateau.moveVehicleForward(rover);
         assertArrayEquals(new int[]{3,3}, rover.getPosition());
         assertEquals(rectanglePlateau.getGrid()[3][3], rover);
     }
@@ -49,7 +49,7 @@ public class RoverMoveForwardTests {
     public void roverStaysInTheSamePlaceIfNoSpaceAvailableFacingEast(){
         Rover rover = new Rover(new int[]{4,3}, Direction.E);
         rectanglePlateau.addVehicle(rover);
-        rectanglePlateau.moveVehicle(rover);
+        rectanglePlateau.moveVehicleForward(rover);
         assertArrayEquals(new int[]{4,3}, rover.getPosition());
         assertEquals(rectanglePlateau.getGrid()[4][3], rover);
     }
@@ -58,7 +58,7 @@ public class RoverMoveForwardTests {
     public void canMoveForwardWhenFacingWestAndSpaceAvailable(){
         Rover rover = new Rover(new int[]{1,1}, Direction.W);
         rectanglePlateau.addVehicle(rover);
-        rectanglePlateau.moveVehicle(rover);
+        rectanglePlateau.moveVehicleForward(rover);
         assertArrayEquals(new int[]{0,1}, rover.getPosition());
         assertEquals(rectanglePlateau.getGrid()[0][1], rover);
     }
@@ -67,7 +67,7 @@ public class RoverMoveForwardTests {
     public void roverStaysInTheSamePlaceIfNoSpaceAvailableFacingWest(){
         Rover rover = new Rover(new int[]{0,1}, Direction.W);
         rectanglePlateau.addVehicle(rover);
-        rectanglePlateau.moveVehicle(rover);
+        rectanglePlateau.moveVehicleForward(rover);
         assertArrayEquals(new int[]{0,1}, rover.getPosition());
         assertEquals(rectanglePlateau.getGrid()[0][1], rover);
     }
@@ -76,7 +76,7 @@ public class RoverMoveForwardTests {
     public void canMoveForwardWhenFacingSouthAndSpaceAvailable(){
         Rover rover = new Rover(new int[]{0,1}, Direction.S);
         rectanglePlateau.addVehicle(rover);
-        rectanglePlateau.moveVehicle(rover);
+        rectanglePlateau.moveVehicleForward(rover);
         assertArrayEquals(new int[]{0,0}, rover.getPosition());
         assertEquals(rectanglePlateau.getGrid()[0][0], rover);
     }
@@ -85,7 +85,7 @@ public class RoverMoveForwardTests {
     public void roverStaysInTheSamePlaceIfNoSpaceAvailableFacingSouth(){
         Rover rover = new Rover(new int[]{0,0}, Direction.S);
         rectanglePlateau.addVehicle(rover);
-        rectanglePlateau.moveVehicle(rover);
+        rectanglePlateau.moveVehicleForward(rover);
         assertArrayEquals(new int[]{0,0}, rover.getPosition());
         assertEquals(rectanglePlateau.getGrid()[0][0], rover);
     }

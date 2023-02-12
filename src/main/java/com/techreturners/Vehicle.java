@@ -36,19 +36,6 @@ public abstract class Vehicle {
         this.direction = direction;
     }
 
-    /*public String move(String movements) {
-        String updatedPosition = "";
-        for(int i=0; i<movements.length(); i++){
-            char input = movements.charAt(i);
-            // Check if move forward or direction
-            switch (input) {
-                case 'M' -> moveForward();
-                case 'L', 'R' -> changeDirection(input);
-            }
-        }
-        return updatedPosition;
-    }*/
-
     public void changeDirection(Orientation input){
         switch(input){
             case L -> {
@@ -70,5 +57,5 @@ public abstract class Vehicle {
         }
     }
 
-    abstract String moveForward(Object[][] grid);
+    abstract boolean moveForward(Object[][] grid);
 }
