@@ -121,6 +121,37 @@ public class RectanglePlateauTest {
         assertNotNull(rectanglePlateau.getGrid()[4][3]);
     }
 
+
+    @Test
+    public void blankStringMovementShouldNotChange(){
+        Rover rover = new Rover(new int[]{3, 3}, Direction.E);
+        rectanglePlateau.addVehicle(rover);
+        assertEquals("33E", rectanglePlateau.moveVehicle("", rover));
+        assertEquals(Direction.E, rover.getDirection());
+        assertArrayEquals(new int[]{3, 3}, rover.getPosition());
+        assertNotNull(rectanglePlateau.getGrid()[3][3]);
+    }
+
+    @Test
+    public void invalidStringMovementShouldNotChange(){
+        Rover rover = new Rover(new int[]{3, 3}, Direction.E);
+        rectanglePlateau.addVehicle(rover);
+        assertEquals("33E", rectanglePlateau.moveVehicle("S", rover));
+        assertEquals(Direction.E, rover.getDirection());
+        assertArrayEquals(new int[]{3, 3}, rover.getPosition());
+        assertNotNull(rectanglePlateau.getGrid()[3][3]);
+    }
+
+    @Test
+    public void invalidStringMovementWithValidStringMovementShouldIgnoreInvalid(){
+        Rover rover = new Rover(new int[]{3, 3}, Direction.E);
+        rectanglePlateau.addVehicle(rover);
+        assertEquals("33N", rectanglePlateau.moveVehicle("LSLR", rover));
+        assertEquals(Direction.N, rover.getDirection());
+        assertArrayEquals(new int[]{3, 3}, rover.getPosition());
+        assertNotNull(rectanglePlateau.getGrid()[3][3]);
+    }
+
     @Test
     public void testPrintingGrid(){
         Rover rover = new Rover(new int[] {2,4}, Direction.N);
