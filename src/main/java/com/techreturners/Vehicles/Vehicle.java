@@ -1,4 +1,7 @@
-package com.techreturners;
+package com.techreturners.Vehicles;
+
+import com.techreturners.Enums.Direction;
+import com.techreturners.Enums.Orientation;
 
 public abstract class Vehicle {
 
@@ -57,5 +60,5 @@ public abstract class Vehicle {
         }
     }
 
-    abstract boolean moveForward(Object[][] grid);
+    public abstract boolean moveForward(Object[][] grid);
 }

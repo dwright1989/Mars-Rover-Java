@@ -1,7 +1,7 @@
 package com.techreturners.PlateauTests;
-import com.techreturners.Direction;
-import com.techreturners.RectanglePlateau;
-import com.techreturners.Rover;
+import com.techreturners.Enums.Direction;
+import com.techreturners.Plateaus.RectanglePlateau;
+import com.techreturners.Vehicles.Rover;
 import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;
@@ -47,6 +47,16 @@ public class RectanglePlateauTest {
         assertArrayEquals(new int[]{1, 3}, rover.getPosition());
         assertNotNull(rectanglePlateau.getGrid()[1][3]);
         assertNull(rectanglePlateau.getGrid()[2][3]);
+    }
+
+    @Test
+    public void canMoveVehicleOneSpaceToTheLeftWhereIncompatible(){
+        Rover rover = new Rover(new int[]{0, 4}, Direction.N);
+        rectanglePlateau.addVehicle(rover);
+        assertEquals("04W", rectanglePlateau.moveVehicle("LM", rover));
+        assertEquals(Direction.W, rover.getDirection());
+        assertArrayEquals(new int[]{0, 4}, rover.getPosition());
+        assertNotNull(rectanglePlateau.getGrid()[0][4]);
     }
 
     @Test

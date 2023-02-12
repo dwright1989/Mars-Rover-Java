@@ -1,4 +1,6 @@
-package com.techreturners;
+package com.techreturners.Plateaus;
+
+import com.techreturners.Vehicles.Vehicle;
 
 public abstract class Plateau {
     private Object[][] grid;

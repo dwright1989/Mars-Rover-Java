@@ -1,4 +1,7 @@
-package com.techreturners;
+package com.techreturners.Planets;
+
+import com.techreturners.Plateaus.Plateau;
+import com.techreturners.Plateaus.RectanglePlateau;
 
 import java.util.ArrayList;
 

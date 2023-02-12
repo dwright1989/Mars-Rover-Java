@@ -1,6 +1,9 @@
-package com.techreturners;
+package com.techreturners.Plateaus;
 
-public class RectanglePlateau extends Plateau{
+import com.techreturners.Enums.Orientation;
+import com.techreturners.Vehicles.Vehicle;
+
+public class RectanglePlateau extends Plateau {
 
 
     public RectanglePlateau(int x,int y) {

@@ -1,9 +1,9 @@
 package com.techreturners.RoverTests;
 
-import com.techreturners.Direction;
-import com.techreturners.Orientation;
-import com.techreturners.RectanglePlateau;
-import com.techreturners.Rover;
+import com.techreturners.Enums.Direction;
+import com.techreturners.Enums.Orientation;
+import com.techreturners.Plateaus.RectanglePlateau;
+import com.techreturners.Vehicles.Rover;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
