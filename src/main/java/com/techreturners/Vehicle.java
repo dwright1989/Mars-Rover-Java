@@ -1,6 +1,6 @@
 package com.techreturners;
 
-public class Vehicle {
+public abstract class Vehicle {
 
     private int size;
     private int[] position;
@@ -35,4 +35,19 @@ public class Vehicle {
     public void setDirection(Direction direction) {
         this.direction = direction;
     }
+
+    /*public String move(String movements) {
+        String updatedPosition = "";
+        for(int i=0; i<movements.length(); i++){
+            char input = movements.charAt(i);
+            // Check if move forward or direction
+            switch (input) {
+                case 'M' -> moveForward();
+                case 'L', 'R' -> changeDirection(input);
+            }
+        }
+        return updatedPosition;
+    }*/
+
+   abstract void moveForward();
 }

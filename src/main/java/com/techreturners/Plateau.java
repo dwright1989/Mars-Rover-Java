@@ -16,13 +16,18 @@ public class Plateau {
 
     public void printGrid(){
         int n =grid.length;
-
-
         for(int i=0; i< n; i++) {
             int m = grid[i].length;
             for(int j=0; j<grid[i].length; j++){
-                System.out.print(grid[n-i-1][m-j-1] + "");
+                Object gridPosition = grid[n-i-1][m-j-1];
+                if(gridPosition==null){
+                    System.out.print(" _ ");
+                }else{
+                    System.out.print(" X ");
+                }
             }
+            System.out.println(" ");
         }
     }
+
 }

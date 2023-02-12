@@ -30,4 +30,12 @@ public class RectanglePlateau extends Plateau{
 
     }
 
+    public void moveVehicle(Vehicle vehicle){
+        // Add checks to see if CAN move forward
+        // If so update grid and move vehicle forward
+        removeVehicle(vehicle);
+        vehicle.moveForward();
+        addVehicle(vehicle);
+    }
+
 }
