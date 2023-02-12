@@ -1,10 +1,18 @@
 package com.techreturners;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RoverTest {
+
+    RectanglePlateau rectanglePlateau;
+
+    @BeforeEach
+    public void setUp(){
+        rectanglePlateau = new RectanglePlateau(5,5);
+    }
 
     @Test
     public void canCreateRover(){
@@ -13,9 +21,14 @@ public class RoverTest {
         assertEquals(Direction.N, rover.getDirection());
     }
 
+    /*
+    ################################################
+    ############## MOVE FORWARD TESTS ##############
+    ################################################
+     */
+
     @Test
     public void canMoveForwardWhenFacingNorthAndSpaceAvailable(){
-        RectanglePlateau rectanglePlateau = new RectanglePlateau(5,5);
         Rover rover = new Rover(new int[]{2,3}, Direction.N);
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
@@ -25,7 +38,6 @@ public class RoverTest {
 
     @Test
     public void roverStaysInTheSamePlaceIfNoSpaceAvailableFacingNorth(){
-        RectanglePlateau rectanglePlateau = new RectanglePlateau(5,5);
         Rover rover = new Rover(new int[]{2,4}, Direction.N);
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
@@ -35,7 +47,6 @@ public class RoverTest {
 
     @Test
     public void canMoveForwardWhenFacingEastAndSpaceAvailable(){
-        RectanglePlateau rectanglePlateau = new RectanglePlateau(5,5);
         Rover rover = new Rover(new int[]{2,3}, Direction.E);
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
@@ -45,7 +56,6 @@ public class RoverTest {
 
     @Test
     public void roverStaysInTheSamePlaceIfNoSpaceAvailableFacingEast(){
-        RectanglePlateau rectanglePlateau = new RectanglePlateau(5,5);
         Rover rover = new Rover(new int[]{4,3}, Direction.E);
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
@@ -55,7 +65,6 @@ public class RoverTest {
 
     @Test
     public void canMoveForwardWhenFacingWestAndSpaceAvailable(){
-        RectanglePlateau rectanglePlateau = new RectanglePlateau(5,5);
         Rover rover = new Rover(new int[]{1,1}, Direction.W);
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
@@ -65,7 +74,6 @@ public class RoverTest {
 
     @Test
     public void roverStaysInTheSamePlaceIfNoSpaceAvailableFacingWest(){
-        RectanglePlateau rectanglePlateau = new RectanglePlateau(5,5);
         Rover rover = new Rover(new int[]{0,1}, Direction.W);
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
@@ -75,7 +83,6 @@ public class RoverTest {
 
     @Test
     public void canMoveForwardWhenFacingSouthAndSpaceAvailable(){
-        RectanglePlateau rectanglePlateau = new RectanglePlateau(5,5);
         Rover rover = new Rover(new int[]{0,1}, Direction.S);
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
@@ -85,7 +92,6 @@ public class RoverTest {
 
     @Test
     public void roverStaysInTheSamePlaceIfNoSpaceAvailableFacingSouth(){
-        RectanglePlateau rectanglePlateau = new RectanglePlateau(5,5);
         Rover rover = new Rover(new int[]{0,0}, Direction.S);
         rectanglePlateau.addVehicle(rover);
         rectanglePlateau.moveVehicle(rover);
@@ -93,6 +99,20 @@ public class RoverTest {
         assertEquals(rectanglePlateau.getGrid()[0][0], rover);
     }
 
+    /*
+    ################################################
+    ############  CHANGE DIRECTION TESTS ###########
+    ################################################
+     */
+
+
+    @Test
+    public void roverChangesLeftFromNorth(){
+        Rover rover = new Rover(new int[]{2,3}, Direction.N);
+        rectanglePlateau.addVehicle(rover);
+        rover.changeDirection(Orientation.L);
+        assertEquals(Direction.W, rover.getDirection());
+    }
 
 
     /*@Test

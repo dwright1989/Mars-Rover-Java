@@ -49,5 +49,26 @@ public abstract class Vehicle {
         return updatedPosition;
     }*/
 
+    public void changeDirection(Orientation input){
+        switch(input){
+            case L -> {
+                switch (getDirection()) {
+                    case N -> setDirection(Direction.W);
+                    case E -> setDirection(Direction.N);
+                    case S -> setDirection(Direction.E);
+                    case W -> setDirection(Direction.S);
+                }
+            }
+            case R -> {
+                switch (getDirection()) {
+                    case N -> setDirection(Direction.E);
+                    case E -> setDirection(Direction.S);
+                    case S -> setDirection(Direction.W);
+                    case W -> setDirection(Direction.N);
+                }
+            }
+        }
+    }
+
     abstract String moveForward(Object[][] grid);
 }
