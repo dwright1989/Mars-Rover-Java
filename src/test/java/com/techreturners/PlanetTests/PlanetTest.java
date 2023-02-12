@@ -1,5 +1,7 @@
-package com.techreturners;
+package com.techreturners.PlanetTests;
 
+import com.techreturners.Planet;
+import com.techreturners.RectanglePlateau;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

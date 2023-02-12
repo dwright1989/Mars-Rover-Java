@@ -1,4 +1,7 @@
-package com.techreturners;
+package com.techreturners.PlateauTests;
+import com.techreturners.Direction;
+import com.techreturners.RectanglePlateau;
+import com.techreturners.Rover;
 import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;
