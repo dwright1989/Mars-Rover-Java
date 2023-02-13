@@ -87,37 +87,44 @@ public class UserInterfaceValidationTests {
      */
     @Test
     public void vehiclePlacementMustBeTwoDigitsFollowedByADirection(){
-        assertTrue(UserInterfaceValidation.isValidVehiclesValues("12N"));
-        assertTrue(UserInterfaceValidation.isValidVehiclesValues("99E"));
-        assertFalse(UserInterfaceValidation.isValidVehiclesValues("9E"));
-        assertFalse(UserInterfaceValidation.isValidVehiclesValues("9"));
+        assertTrue(UserInterfaceValidation.isValidVehiclesValues("12N", new Object[5][5]));
+        assertTrue(UserInterfaceValidation.isValidVehiclesValues("99E", new Object[9][9]));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("9E", new Object[9][9]));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("9", new Object[9][9]));
     }
 
     @Test
     public void vehiclePlacementMustBeTwoDigitsFollowedByADirectionWithWhiteSpace(){
-        assertTrue(UserInterfaceValidation.isValidVehiclesValues("12 N"));
-        assertTrue(UserInterfaceValidation.isValidVehiclesValues(" 1 2 N"));
+        assertTrue(UserInterfaceValidation.isValidVehiclesValues("12 N", new Object[9][9]));
+        assertTrue(UserInterfaceValidation.isValidVehiclesValues(" 1 2 N", new Object[9][9]));
     }
 
     @Test
     public void vehiclePlacementMustNotBeAllLetters(){
-        assertFalse(UserInterfaceValidation.isValidVehiclesValues("123"));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("123", new Object[9][9]));
     }
 
     @Test
     public void vehiclePlacementMustContainEnum(){
-        assertFalse(UserInterfaceValidation.isValidVehiclesValues("12P"));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("12P", new Object[9][9]));
     }
 
     @Test
     public void vehiclePlacementMustNotBeBlank(){
-        assertFalse(UserInterfaceValidation.isValidVehiclesValues(""));
-        assertFalse(UserInterfaceValidation.isValidVehiclesValues(" "));
-        assertFalse(UserInterfaceValidation.isValidVehiclesValues("   "));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("", new Object[9][9]));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues(" ", new Object[9][9]));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("   ", new Object[9][9]));
     }
 
     @Test
     public void vehiclePlacementIsNotCaseSensitive(){
-        assertTrue(UserInterfaceValidation.isValidVehiclesValues("12n"));
+        assertTrue(UserInterfaceValidation.isValidVehiclesValues("12n", new Object[9][9]));
+    }
+
+    @Test
+    public void shouldNotBeAbleToAddVehicleOutWithPlateau(){
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("76N", new Object[5][5]));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("46N", new Object[5][5]));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("64N", new Object[5][5]));
     }
 }

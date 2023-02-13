@@ -18,12 +18,15 @@ public class UserInterfaceValidation {
         return Pattern.matches("^(0|[1-9][0-9]*)$", number) && number.equals("1");
     }
 
-    public static boolean isValidVehiclesValues(String values){
+    public static boolean isValidVehiclesValues(String values, Object[][] grid){
         boolean isValid = false;
         values = values.replaceAll("\\s+","");
         if(values.length()==3){
-            String position = values.substring(0,2);
-            boolean firstSectionValid = Pattern.matches("^(0|[1-9][0-9]*)$", position);
+            int positionX = Integer.parseInt(values.substring(0, 1));
+            int positionY = Integer.parseInt(values.substring(1, 2));
+            int xLength = grid.length;
+            int yLength = grid[0].length;
+            boolean firstSectionValid = positionX <= xLength && positionY <= yLength;
             if(firstSectionValid){
                 String dir = values.substring(2);
                 dir =  dir.toUpperCase();

@@ -16,6 +16,8 @@ public abstract class Plateau {
         this.grid = grid;
     }
 
+
+
     public void printGrid(){
         int xLength = grid.length;
         int yLength = grid[0].length;
@@ -61,4 +63,5 @@ public abstract class Plateau {
 
 
     public abstract String moveVehicle(String movements, Vehicle vehicle);
+    public abstract boolean addVehicle(Vehicle vehicle);
 }

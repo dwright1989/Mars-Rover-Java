@@ -10,15 +10,24 @@ public class RectanglePlateau extends Plateau {
         super.setGrid(new Object[x][y]);
     }
 
-    public void addVehicle(Vehicle vehicle) {
+    public boolean addVehicle(Vehicle vehicle) {
+        boolean added = false;
         int x = vehicle.getPosition()[0];
         int y = vehicle.getPosition()[1];
-        super.getGrid()[x][y] = vehicle;
+        // Check can add vehicle here
+        int xLength = super.getGrid().length;
+        int yLength = super.getGrid()[0].length;
+        if(x<=xLength && y<=yLength){
+            super.getGrid()[x][y] = vehicle;
+            added = true;
+        }
+
         if(vehicle.getSize()>1){
             // Additional logic can be added here if/when larger vehicles implemented
             // E.g. spans over two squares - check the direction and add vehicle on additional array elements
             // So size == 2 at pos [0,1] and direction N would also be added to [1,1]
         }
+        return added;
     }
 
     public void removeVehicle(int[] pos, int size) {
