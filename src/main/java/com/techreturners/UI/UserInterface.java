@@ -53,9 +53,13 @@ public class UserInterface {
         plateau.addVehicle(vehicle);
         plateau.printGrid();
         System.out.println("Your vehicle has been placed on the grid");
-        // Move the vehicle
+        getUserInputJourney(scanner, plateau, vehicle);
+        System.out.println("Your vehicle has now completed it's journey.  See the results below. Goodbye.");
+        plateau.printGrid();
         scanner.close();
     }
+
+
 
     /*
     Plateau generation
@@ -108,6 +112,34 @@ public class UserInterface {
         int yPos = Integer.parseInt(vehicleValues.substring(1, 2));
         Direction dir = Direction.valueOf(vehicleValues.substring(2,3).toUpperCase());
         return new Rover(new int[]{xPos,yPos}, dir);
+    }
+
+    /*
+    Vehicle movement
+     */
+    private void getUserInputJourney(Scanner scanner, Plateau plateau, Vehicle vehicle) {
+        String movementValues = getUserEnteredMovementValues(scanner);
+        plateau.moveVehicle(movementValues, vehicle);
+    }
+
+    private String getUserEnteredMovementValues(Scanner scanner) {
+        System.out.println("Enter your journey for your vehicle");
+        System.out.println("Valid moves include: ");
+        System.out.println("L - turn left");
+        System.out.println("R - turn right");
+        System.out.println("M - move forward");
+        System.out.println("For example, LMM will turn the vehicle left and move forward 2x.");
+        String movementValues = scanner.next();
+        while(!isValidMovementValues(movementValues)){
+            System.out.println("Please enter a valid selection.");
+            System.out.println("Valid moves include: ");
+            System.out.println("L - turn left");
+            System.out.println("R - turn right");
+            System.out.println("M - move forward");
+            System.out.println("For example, LMM will turn the vehicle left and move forward 2x.");
+            movementValues = scanner.next();
+        }
+        return movementValues;
     }
 
 

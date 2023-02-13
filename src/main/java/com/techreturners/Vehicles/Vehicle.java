@@ -27,10 +27,6 @@ public abstract class Vehicle {
         return direction;
     }
 
-    public void setSize(int size) {
-        this.size = size;
-    }
-
     public void setPosition(int[] position) {
         this.position = position;
     }

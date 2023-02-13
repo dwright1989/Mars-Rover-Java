@@ -49,6 +49,7 @@ public class RectanglePlateau extends Plateau {
 
     @Override
     public String moveVehicle(String movements, Vehicle vehicle) {
+        movements = movements.toUpperCase();
         for(int i=0; i<movements.length(); i++){
             char input = movements.charAt(i);
             switch (input) {

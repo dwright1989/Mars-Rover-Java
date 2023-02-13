@@ -134,4 +134,48 @@ public class UserInterfaceValidationTests {
         assertFalse(UserInterfaceValidation.isValidVehiclesValues("4-6N", new Object[9][9]));
         assertFalse(UserInterfaceValidation.isValidVehiclesValues("64-N", new Object[9][9]));
     }
+
+    /*
+    Vehicle Movement Tests
+     */
+    @Test
+    public void movementStringCanOnlyContainLRandM(){
+        assertTrue(UserInterfaceValidation.isValidMovementValues("LL"));
+        assertTrue(UserInterfaceValidation.isValidMovementValues("L"));
+        assertTrue(UserInterfaceValidation.isValidMovementValues("RLMMMMM"));
+        assertTrue(UserInterfaceValidation.isValidMovementValues("MMMRL"));
+    }
+
+    @Test
+    public void movementStringCanBeLowerCase(){
+        assertTrue(UserInterfaceValidation.isValidMovementValues("ll"));
+        assertTrue(UserInterfaceValidation.isValidMovementValues("l"));
+        assertTrue(UserInterfaceValidation.isValidMovementValues("rlmmmmm"));
+        assertTrue(UserInterfaceValidation.isValidMovementValues("mmmrl"));
+    }
+
+    @Test
+    public void movementStringCannotBeEmpty(){
+        assertFalse(UserInterfaceValidation.isValidMovementValues(""));
+        assertFalse(UserInterfaceValidation.isValidMovementValues(" "));
+        assertFalse(UserInterfaceValidation.isValidMovementValues("     "));
+    }
+
+    @Test
+    public void movementStringCannotContainNumbers(){
+        assertFalse(UserInterfaceValidation.isValidMovementValues("LRM1"));
+        assertFalse(UserInterfaceValidation.isValidMovementValues("2LRMLRM"));
+        assertFalse(UserInterfaceValidation.isValidMovementValues("1"));
+        assertFalse(UserInterfaceValidation.isValidMovementValues("1232"));
+    }
+
+    @Test
+    public void movementStringCannotContainSpecialCharacters(){
+        assertFalse(UserInterfaceValidation.isValidMovementValues("!"));
+        assertFalse(UserInterfaceValidation.isValidMovementValues("LRM!"));
+        assertFalse(UserInterfaceValidation.isValidMovementValues("2LRML?RM"));
+        assertFalse(UserInterfaceValidation.isValidMovementValues("1&"));
+        assertFalse(UserInterfaceValidation.isValidMovementValues("12£32"));
+    }
+
 }

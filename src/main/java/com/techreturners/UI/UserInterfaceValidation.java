@@ -40,4 +40,14 @@ public class UserInterfaceValidation {
         }
         return isValid;
     }
+
+    public static boolean isValidMovementValues(String values){
+        values = values.replaceAll("\\s+","");
+        if(values.isEmpty()){
+            return false;
+        }
+        values = values.toUpperCase();
+        return  Pattern.matches("[LRM]*", values);
+    }
+
 }
