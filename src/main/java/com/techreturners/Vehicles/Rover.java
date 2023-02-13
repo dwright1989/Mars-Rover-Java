@@ -34,10 +34,7 @@ public class Rover extends Vehicle {
         }
         if(canMove){
             setPosition(newPosition);
-            return canMove;
-        }else{
-            return canMove;
         }
-
+        return canMove;
     }
 }

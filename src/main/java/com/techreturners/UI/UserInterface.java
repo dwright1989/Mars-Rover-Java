@@ -1,11 +1,9 @@
 package com.techreturners.UI;
 
 import com.techreturners.Planets.Planet;
-import com.techreturners.Plateaus.RectanglePlateau;
 import com.techreturners.User;
-
 import java.util.Scanner;
-import java.util.regex.Pattern;
+import static com.techreturners.UI.UserInterfaceValidation.*;
 
 public class UserInterface {
     User user;
@@ -63,18 +61,5 @@ public class UserInterface {
         //mars.addPlateau();
     }
 
-    /*
-    Validation Methods
-     */
-    private boolean isValidPlateauCoordinates(String values){
-        return Pattern.matches("^(0|[1-9][0-9]*)$", values) && values.length() == 2;
-    }
 
-    private boolean isValidName(String name){
-        return Pattern.matches("[A-Za-z]*", name);
-    }
-
-    private boolean isValidPlanetSelection(String number){
-        return Pattern.matches("^(0|[1-9][0-9]*)$", number) && number.equals("1");
-    }
 }
