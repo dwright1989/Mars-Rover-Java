@@ -90,6 +90,7 @@ public class UserInterfaceValidationTests {
         assertTrue(UserInterfaceValidation.isValidVehiclesValues("12N"));
         assertTrue(UserInterfaceValidation.isValidVehiclesValues("99E"));
         assertFalse(UserInterfaceValidation.isValidVehiclesValues("9E"));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("9"));
     }
 
     @Test
