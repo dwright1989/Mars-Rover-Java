@@ -1,5 +1,6 @@
 package com.techreturners.UI;
 
+import com.techreturners.Enums.Colour;
 import com.techreturners.Enums.Direction;
 import com.techreturners.Planets.Planet;
 import com.techreturners.Plateaus.Plateau;
@@ -28,6 +29,7 @@ public class UserInterface {
 
     public void startApplication(){
         Scanner scanner = new Scanner(System.in);
+        System.out.print(Colour.BLUE);
         System.out.println("\nWelcome to the planet explorer.  What is your name?");
         String name = scanner.next();
         while(!isValidName(name)){
@@ -52,9 +54,12 @@ public class UserInterface {
         Vehicle vehicle = createVehicleAndAddToPlateau(scanner, plateau);
         plateau.addVehicle(vehicle);
         plateau.printGrid();
+        System.out.print(Colour.BLUE);
         System.out.println("Your vehicle has been placed on the grid");
         getUserInputJourney(scanner, plateau, vehicle);
-        System.out.println("Your vehicle has now completed it's journey.  See the results below. Goodbye.");
+        System.out.println("Your vehicle has now completed it's journey.");
+        System.out.println("Your vehicle has been moved as far in it's journey as possible without moving off the edge of the plateau!");
+        System.out.println("See the results below. Goodbye.");
         plateau.printGrid();
         scanner.close();
     }
@@ -71,6 +76,7 @@ public class UserInterface {
     }
 
     private String getUserEnteredPlateauSize(Scanner scanner) {
+        System.out.print(Colour.BLUE);
         System.out.println("Enter a plateau size in the form XY.  Where X is the length of the horizontal coordinates and Y is the length of the vertical coordinates. E.g. 54");
         String plateauValues = scanner.next();
         while(!isValidPlateauCoordinates(plateauValues)){
@@ -85,6 +91,7 @@ public class UserInterface {
         int yCoord = Character.digit(plateauValues.charAt(1),10);
         RectanglePlateau plateau = new RectanglePlateau(xCoord, yCoord); // TODO upgrade if/when different shapes of plateaus available
         mars.addPlateau(plateau);
+        System.out.print(Colour.BLUE);
         System.out.println("Thank you, " + user.getName() + "!  Have a look at the grid of the plateau below.");
         return plateau;
     }
@@ -98,6 +105,7 @@ public class UserInterface {
     }
 
     private String getUserEnteredVehicleValues(Scanner scanner, Plateau plateau) {
+        System.out.print(Colour.BLUE);
         System.out.println("Where would you like to place your vehicle?  Enter two coordinates followed by a direction e.g. 11N for x coordinate 1, y coordinate 1 and facing North.");
         String vehicleValues = scanner.next();
         while(!isValidVehiclesValues(vehicleValues, plateau.getGrid())){
@@ -123,6 +131,7 @@ public class UserInterface {
     }
 
     private String getUserEnteredMovementValues(Scanner scanner) {
+        System.out.print(Colour.BLUE);
         System.out.println("Enter your journey for your vehicle");
         System.out.println("Valid moves include: ");
         System.out.println("L - turn left");

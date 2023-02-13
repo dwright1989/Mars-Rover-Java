@@ -29,10 +29,13 @@ public abstract class Plateau {
             for (Object[] objects : grid) {
                 Object gridPosition = objects[yLength - j];
                 if (gridPosition == null) {
-                    System.out.print("|   |");
-                } else {
-                    System.out.print("|");
                     System.out.print(Colour.RED_BRIGHT);
+                    System.out.print("|   |");
+                    System.out.print(Colour.RESET);
+                } else {
+                    System.out.print(Colour.RED_BRIGHT);
+                    System.out.print("|");
+                    System.out.print(Colour.BLUE);
                     switch (((Rover) gridPosition).getDirection()) {
                         case N -> {
                             System.out.print(" " + Unicode.NORTH_ARROW + " ");
@@ -48,6 +51,7 @@ public abstract class Plateau {
                         }
                     }
                     System.out.print(Colour.RESET);
+                    System.out.print(Colour.RED_BRIGHT);
                     System.out.print("|");
                 }
             }
