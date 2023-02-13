@@ -9,4 +9,8 @@ public class User {
         this.planet = planet;
         this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
 }

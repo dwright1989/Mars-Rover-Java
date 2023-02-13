@@ -6,11 +6,13 @@ import com.techreturners.User;
 import java.util.Scanner;
 
 public class UserInterface {
+    User user;
+    Planet mars;
     public UserInterface(){
-        createUser();
+        startApplication();
     }
 
-    public void createUser(){
+    public void startApplication(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nWelcome to the planet explorer.  What is your name?");
         while(!scanner.hasNext("[A-Za-z]*")){
@@ -26,9 +28,24 @@ public class UserInterface {
 
         System.out.println("Welcome to Mars, " + name);
         // Assuming the planet is Mars - TODO upgrade if/when more planets added
-        Planet mars = new Planet("Mars", -81, 3389.5, 3.721);
-        User user = new User(mars, name);
+        mars = new Planet("Mars", -81, 3389.5, 3.721);
+        user = new User(mars, name);
 
+        // Add a plateau
+        addPlateauToPlanet(scanner);
+        // Add a vehicle
+        // Move the vehicle
         scanner.close();
+    }
+
+    private void addPlateauToPlanet(Scanner scanner) {
+        System.out.println("Enter a plateau size in the form XY.  Where X is the length of the horizontal coordinates and Y is the length of the vertical coordinates. E.g. 54");
+        String input = scanner.next();
+        while(input.length()!=2){
+            System.out.println("Please enter a valid selection.  This must be two numerical values e.g. 54. The largest values you can enter are 99");
+            input = scanner.next();
+        }
+        System.out.println("Thank you, " + user.getName() + "!  Have a look at the grid of the plateau below.");
+        //mars.addPlateau();
     }
 }
