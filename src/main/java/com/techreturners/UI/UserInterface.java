@@ -1,9 +1,11 @@
 package com.techreturners.UI;
 
 import com.techreturners.Planets.Planet;
+import com.techreturners.Plateaus.RectanglePlateau;
 import com.techreturners.User;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class UserInterface {
     User user;
@@ -15,37 +17,64 @@ public class UserInterface {
     public void startApplication(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nWelcome to the planet explorer.  What is your name?");
-        while(!scanner.hasNext("[A-Za-z]*")){
-            System.out.println("Please enter a valid name");
-            scanner.next();
-        }
         String name = scanner.next();
+        while(!isValidName(name)){
+            System.out.println("Please enter a valid name");
+            name = scanner.next();
+        }
         System.out.println("Welcome " + name + " please select which planet you would like to explore.");
         System.out.println("[1] Mars");
-        while(!(scanner.nextInt()==1)){
+        // Assuming the planet is Mars - TODO upgrade if/when more planets added
+        String planetSelection = scanner.next();
+        while(!isValidPlanetSelection(planetSelection)){
             System.out.println("Please enter a valid selection");
+            planetSelection = scanner.next();
         }
 
         System.out.println("Welcome to Mars, " + name);
-        // Assuming the planet is Mars - TODO upgrade if/when more planets added
         mars = new Planet("Mars", -81, 3389.5, 3.721);
         user = new User(mars, name);
 
-        // Add a plateau
-        addPlateauToPlanet(scanner);
+        createPlateauAndAddToPlanet(scanner);
         // Add a vehicle
         // Move the vehicle
         scanner.close();
     }
 
-    private void addPlateauToPlanet(Scanner scanner) {
+    private void createPlateauAndAddToPlanet(Scanner scanner){
+        String plateauValues = getUserEnteredPlateauSize(scanner);
+    }
+
+    private String getUserEnteredPlateauSize(Scanner scanner) {
         System.out.println("Enter a plateau size in the form XY.  Where X is the length of the horizontal coordinates and Y is the length of the vertical coordinates. E.g. 54");
-        String input = scanner.next();
-        while(input.length()!=2){
+        String plateauValues = scanner.next();
+        while(!isValidPlateauCoordinates(plateauValues)){
             System.out.println("Please enter a valid selection.  This must be two numerical values e.g. 54. The largest values you can enter are 99");
-            input = scanner.next();
+            plateauValues = scanner.next();
         }
+        return plateauValues;
+    }
+
+    private void generatePlateauFromInput(String plateauValues) {
+        // split plateau values
+        // RectanglePlateau plateau = new RectanglePlateau(); // TODO upgrade if/when different shapes of plateaus available
         System.out.println("Thank you, " + user.getName() + "!  Have a look at the grid of the plateau below.");
+
         //mars.addPlateau();
+    }
+
+    /*
+    Validation Methods
+     */
+    private boolean isValidPlateauCoordinates(String values){
+        return Pattern.matches("^(0|[1-9][0-9]*)$", values) && values.length() == 2;
+    }
+
+    private boolean isValidName(String name){
+        return Pattern.matches("[A-Za-z]*", name);
+    }
+
+    private boolean isValidPlanetSelection(String number){
+        return Pattern.matches("^(0|[1-9][0-9]*)$", number) && number.equals("1");
     }
 }
