@@ -81,4 +81,42 @@ public class UserInterfaceValidationTests {
     public void planetSelectionMustBeWithinSelectionsAvailable(){
         assertFalse(UserInterfaceValidation.isValidPlanetSelection("2"));
     }
+
+      /*
+    Vehicle Placement Validations
+     */
+    @Test
+    public void vehiclePlacementMustBeTwoDigitsFollowedByADirection(){
+        assertTrue(UserInterfaceValidation.isValidVehiclesValues("12N"));
+        assertTrue(UserInterfaceValidation.isValidVehiclesValues("99E"));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("9E"));
+    }
+
+    @Test
+    public void vehiclePlacementMustBeTwoDigitsFollowedByADirectionWithWhiteSpace(){
+        assertTrue(UserInterfaceValidation.isValidVehiclesValues("12 N"));
+        assertTrue(UserInterfaceValidation.isValidVehiclesValues(" 1 2 N"));
+    }
+
+    @Test
+    public void vehiclePlacementMustNotBeAllLetters(){
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("123"));
+    }
+
+    @Test
+    public void vehiclePlacementMustContainEnum(){
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("12P"));
+    }
+
+    @Test
+    public void vehiclePlacementMustNotBeBlank(){
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues(""));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues(" "));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("   "));
+    }
+
+    @Test
+    public void vehiclePlacementIsNotCaseSensitive(){
+        assertTrue(UserInterfaceValidation.isValidVehiclesValues("12n"));
+    }
 }

@@ -4,10 +4,21 @@ import com.techreturners.Planets.Planet;
 import com.techreturners.Plateaus.Plateau;
 import com.techreturners.Plateaus.RectanglePlateau;
 import com.techreturners.User;
+import com.techreturners.Vehicles.Rover;
+import com.techreturners.Vehicles.Vehicle;
+
 import java.util.Scanner;
 import static com.techreturners.UI.UserInterfaceValidation.*;
 
 public class UserInterface {
+    /*
+    CURRENT UI ASSUMPTION
+    - Planet is Mars
+    - Plateau is Rectangle
+    - Vehicle is rover
+    - Planet can have ONE User
+    - These have the background logic available to add further planets, plateaus and vehicles however UI must be updated to address this
+     */
     User user;
     Planet mars;
     public UserInterface(){
@@ -37,10 +48,13 @@ public class UserInterface {
 
         Plateau plateau = createPlateauAndAddToPlanet(scanner);
         plateau.printGrid();
+        Vehicle vehicle = createVehicleAndAddToPlateau(scanner, plateau);
         // Add a vehicle
         // Move the vehicle
         scanner.close();
     }
+
+
 
     private Plateau createPlateauAndAddToPlanet(Scanner scanner){
         String plateauValues = getUserEnteredPlateauSize(scanner);
@@ -64,6 +78,22 @@ public class UserInterface {
         mars.addPlateau(plateau);
         System.out.println("Thank you, " + user.getName() + "!  Have a look at the grid of the plateau below.");
         return plateau;
+    }
+
+    private Vehicle createVehicleAndAddToPlateau(Scanner scanner, Plateau plateau) {
+       String vehicleValues = getUserEnteredVehicleValues(scanner);
+        //generateVehicleFromUserInput();
+        return null;
+    }
+
+    private String getUserEnteredVehicleValues(Scanner scanner) {
+        System.out.println("Where would you like to place your vehicle?  Enter two coordinates followed by a direction e.g. 11N for x coordinate 1, y coordinate 1 and facing North.");
+        String vehicleValues = scanner.next();
+        while(!isValidVehiclesValues(vehicleValues)){
+            System.out.println("Please enter a valid selection.  Enter two coordinates followed by a direction e.g. 11N for x coordinate 1, y coordinate 1 and facing North.");
+            vehicleValues = scanner.next();
+        }
+        return vehicleValues;
     }
 
 
