@@ -127,4 +127,11 @@ public class UserInterfaceValidationTests {
         assertFalse(UserInterfaceValidation.isValidVehiclesValues("46N", new Object[5][5]));
         assertFalse(UserInterfaceValidation.isValidVehiclesValues("64N", new Object[5][5]));
     }
+
+    @Test
+    public void shouldNotBeAbleToEnterNegativeValues(){
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("-76N", new Object[9][9]));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("4-6N", new Object[9][9]));
+        assertFalse(UserInterfaceValidation.isValidVehiclesValues("64-N", new Object[9][9]));
+    }
 }
