@@ -14,21 +14,25 @@ public abstract class Plateau {
     }
 
     public void printGrid(){
-        int n =grid.length;
         int xLength = grid.length;
         int yLength = grid[0].length;
 
         for(int j=1; j<=yLength; j++){
+            System.out.print(yLength-j + " ");
             for(int i=0; i<xLength; i++){
                 Object gridPosition = grid[i][yLength-j];
                 if(gridPosition==null){
-                    System.out.print(" _ ");
+                    System.out.print("|___|");
                 }else{
-                    System.out.print(" X ");
+                    System.out.print("|_X_|");
                 }
             }
             System.out.println();
         }
+        for(int i=0; i<xLength; i++){
+            System.out.print("    " + i);
+        }
+        System.out.println();
     }
 
 

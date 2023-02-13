@@ -1,6 +1,8 @@
 package com.techreturners.UI;
 
 import com.techreturners.Planets.Planet;
+import com.techreturners.Plateaus.Plateau;
+import com.techreturners.Plateaus.RectanglePlateau;
 import com.techreturners.User;
 import java.util.Scanner;
 import static com.techreturners.UI.UserInterfaceValidation.*;
@@ -33,14 +35,16 @@ public class UserInterface {
         mars = new Planet("Mars", -81, 3389.5, 3.721);
         user = new User(mars, name);
 
-        createPlateauAndAddToPlanet(scanner);
+        Plateau plateau = createPlateauAndAddToPlanet(scanner);
+        plateau.printGrid();
         // Add a vehicle
         // Move the vehicle
         scanner.close();
     }
 
-    private void createPlateauAndAddToPlanet(Scanner scanner){
+    private Plateau createPlateauAndAddToPlanet(Scanner scanner){
         String plateauValues = getUserEnteredPlateauSize(scanner);
+        return generatePlateauFromInput(plateauValues);
     }
 
     private String getUserEnteredPlateauSize(Scanner scanner) {
@@ -53,12 +57,13 @@ public class UserInterface {
         return plateauValues;
     }
 
-    private void generatePlateauFromInput(String plateauValues) {
-        // split plateau values
-        // RectanglePlateau plateau = new RectanglePlateau(); // TODO upgrade if/when different shapes of plateaus available
+    private Plateau generatePlateauFromInput(String plateauValues) {
+        int xCoord = Character.digit(plateauValues.charAt(0),10);
+        int yCoord = Character.digit(plateauValues.charAt(1),10);
+        RectanglePlateau plateau = new RectanglePlateau(xCoord, yCoord); // TODO upgrade if/when different shapes of plateaus available
+        mars.addPlateau(plateau);
         System.out.println("Thank you, " + user.getName() + "!  Have a look at the grid of the plateau below.");
-
-        //mars.addPlateau();
+        return plateau;
     }
 
 
