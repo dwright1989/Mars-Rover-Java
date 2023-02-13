@@ -3,10 +3,9 @@ package com.techreturners.UI;
 import java.util.regex.Pattern;
 
 public class UserInterfaceValidation {
-    /*
-Validation Methods
- */
+
     public static boolean isValidPlateauCoordinates(String values){
+        values = values.replaceAll("\\s+","");
         return Pattern.matches("^(0|[1-9][0-9]*)$", values) && values.length() == 2;
     }
 
