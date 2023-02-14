@@ -29,7 +29,7 @@ public class Rover extends Vehicle {
         int y = getNewPosition()[1];
         int lengthOne = grid.length;
         int lengthTwo = grid[0].length;
-        if(x<lengthOne && x>=0 && y<lengthTwo && y>=0){ // TODO Method may need to be updated if/when obstacles added
+        if(x<lengthOne && x>=0 && y<lengthTwo && y>=0 && grid[x][y] == null){
             canMove = true;
         }
         if(canMove){

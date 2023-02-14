@@ -10,6 +10,7 @@ import com.techreturners.User;
 import com.techreturners.Vehicles.Vehicle;
 import com.techreturners.Vehicles.Rover;
 
+import java.util.Map;
 import java.util.Scanner;
 import static com.techreturners.UI.UserInterfaceValidation.*;
 
@@ -81,9 +82,12 @@ public class UserInterface {
         System.out.print(Colour.ARROW_COLOUR);
         System.out.println(Unicode.WEST_ARROW);
         System.out.print(Colour.MAIN_TEXT_COLOUR);
-        getUserInputJourney(scanner, plateau, vehicle);
-        System.out.println("Your vehicle has now completed it's journey.");
-        System.out.println("Your vehicle has been moved as far in it's journey as possible without moving off the edge of the plateau!");
+        boolean fullJourneyCompleted = getUserInputJourney(scanner, plateau, vehicle);
+        if(!fullJourneyCompleted){
+            System.out.println("Your vehicle has been moved as far in it's journey as possible without moving off the edge of the plateau or running into obstacles!");
+        }else{
+            System.out.println("Your vehicle has now completed it's journey.");
+        }
         System.out.println("See the results below.");
         plateau.printGrid();
         System.out.println();
@@ -173,9 +177,10 @@ public class UserInterface {
     /*
     Vehicle movement
      */
-    private void getUserInputJourney(Scanner scanner, Plateau plateau, Vehicle vehicle) {
+    private boolean getUserInputJourney(Scanner scanner, Plateau plateau, Vehicle vehicle) {
         String movementValues = getUserEnteredMovementValues(scanner);
-        plateau.moveVehicle(movementValues, vehicle);
+        Map<String, Boolean> results = plateau.moveVehicle(movementValues, vehicle);
+        return results.get("1");
     }
 
     private String getUserEnteredMovementValues(Scanner scanner) {

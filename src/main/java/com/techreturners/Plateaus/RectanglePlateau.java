@@ -5,6 +5,9 @@ import com.techreturners.Obstacles.Obstacle;
 import com.techreturners.Obstacles.Rock;
 import com.techreturners.Vehicles.Vehicle;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class RectanglePlateau extends Plateau {
 
 
@@ -13,7 +16,7 @@ public class RectanglePlateau extends Plateau {
         generateObstacles(1);
     }
 
-    public boolean addVehicle(Vehicle vehicle) {
+    public void addVehicle(Vehicle vehicle) {
         boolean added = false;
         int x = vehicle.getPosition()[0];
         int y = vehicle.getPosition()[1];
@@ -31,7 +34,6 @@ public class RectanglePlateau extends Plateau {
             // So size == 2 at pos [0,1] and direction N would also be added to [1,1]
         }
 
-        return added;
     }
 
     public void removeVehicle(int[] pos, int size) {
@@ -52,8 +54,10 @@ public class RectanglePlateau extends Plateau {
     }
 
     @Override
-    public String moveVehicle(String movements, Vehicle vehicle) {
+    public Map<String, Boolean> moveVehicle(String movements, Vehicle vehicle) {
+        boolean fullJourneySuccessful = false;
         movements = movements.toUpperCase();
+        outerloop:
         for(int i=0; i<movements.length(); i++){
             char input = movements.charAt(i);
             switch (input) {
@@ -63,12 +67,18 @@ public class RectanglePlateau extends Plateau {
                     if(moveSuccessful){
                         removeVehicle(oldPosition, vehicle.getSize());
                         addVehicle(vehicle);
+                        fullJourneySuccessful = true;
+                    }else{
+                        fullJourneySuccessful = false;
+                        break outerloop;
                     }
                 }
                 case 'L', 'R' -> vehicle.changeDirection(Orientation.valueOf(String.valueOf(input)));
             }
         }
-        return vehicle.getPosition()[0] + "" + vehicle.getPosition()[1] + "" + vehicle.getDirection();
+        Map<String, Boolean> results = new HashMap<>();
+        results.put("1", fullJourneySuccessful);
+        return results;
     }
 
     @Override

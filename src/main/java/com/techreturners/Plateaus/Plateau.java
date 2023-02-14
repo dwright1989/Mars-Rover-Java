@@ -5,6 +5,8 @@ import com.techreturners.Enums.Unicode;
 import com.techreturners.Obstacles.Obstacle;
 import com.techreturners.Vehicles.Vehicle;
 
+import java.util.Map;
+
 public abstract class Plateau {
     private Object[][] grid;
 
@@ -72,8 +74,8 @@ public abstract class Plateau {
     }
 
 
-    public abstract String moveVehicle(String movements, Vehicle vehicle);
-    public abstract boolean addVehicle(Vehicle vehicle);
+    public abstract Map<String, Boolean> moveVehicle(String movements, Vehicle vehicle);
+    public abstract void addVehicle(Vehicle vehicle);
 
     public abstract void addObstacle(Obstacle obstacle);
 
