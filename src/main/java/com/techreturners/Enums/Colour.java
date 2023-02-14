@@ -3,6 +3,7 @@ package com.techreturners.Enums;
 public enum Colour {
     //Color end string, color reset
     MAIN_TEXT_COLOUR("\033[0;33m"),
+    ROCK("\033[1;32m"),
     SECONDARY_COLOUR("\033[0;36m"),
     ARROW_COLOUR("\033[0;34m"),
     GRID_COLOUR("\033[0;91m"),

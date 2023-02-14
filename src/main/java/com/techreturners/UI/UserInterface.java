@@ -53,6 +53,10 @@ public class UserInterface {
 
         Plateau plateau = createPlateauAndAddToPlanet(scanner);
         plateau.printGrid();
+        System.out.print(Colour.MAIN_TEXT_COLOUR);
+        System.out.print("Obstacles are represented by: ");
+        System.out.print(Colour.ROCK);
+        System.out.println(Unicode.ROCK);
         Vehicle vehicle = createVehicleAndAddToPlateau(scanner, plateau);
         plateau.addVehicle(vehicle);
         plateau.printGrid();
@@ -128,7 +132,7 @@ public class UserInterface {
        String vehicleValues = getUserEnteredVehicleValues(scanner, plateau);
        boolean validPosition = checkPositionWithinPlateau(vehicleValues, plateau );
        if(!validPosition){
-           System.out.println("These values are outwith the scope of the plateau.  Please try again.");
+           System.out.println("You cannot please your vehicle here.  Please try again.");
            vehicleValues = getUserEnteredVehicleValues(scanner, plateau);
        }
         return generateVehicleFromUserInput(vehicleValues);
@@ -140,7 +144,7 @@ public class UserInterface {
         int yPos = Integer.parseInt(vehicleValues.substring(1, 2));
         int lengthOne = plateau.getGrid().length;
         int lengthTwo = plateau.getGrid()[0].length;
-        if(xPos<lengthOne && xPos>=0 && yPos<lengthTwo && yPos>=0){ // TODO Method may need to be updated if/when obstacles added
+        if(xPos<lengthOne && xPos>=0 && yPos<lengthTwo && yPos>=0 && (plateau.getGrid()[xPos][yPos]==null)){
             isValid = true;
         }
 

@@ -3,8 +3,6 @@ package com.techreturners.Plateaus;
 import com.techreturners.Enums.Colour;
 import com.techreturners.Enums.Unicode;
 import com.techreturners.Obstacles.Obstacle;
-import com.techreturners.Obstacles.Rock;
-import com.techreturners.Vehicles.Rover;
 import com.techreturners.Vehicles.Vehicle;
 
 public abstract class Plateau {
@@ -54,6 +52,7 @@ public abstract class Plateau {
                             }
                         }
                     }else{
+                        System.out.print(Colour.ROCK);
                         System.out.print(" " + Unicode.ROCK + " ");
                     }
 
@@ -74,7 +73,7 @@ public abstract class Plateau {
 
 
     public abstract String moveVehicle(String movements, Vehicle vehicle);
-    public abstract void addVehicle(Vehicle vehicle);
+    public abstract boolean addVehicle(Vehicle vehicle);
 
     public abstract void addObstacle(Obstacle obstacle);
 
