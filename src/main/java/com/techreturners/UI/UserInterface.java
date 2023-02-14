@@ -131,9 +131,10 @@ public class UserInterface {
     private Vehicle createVehicleAndAddToPlateau(Scanner scanner, Plateau plateau) {
        String vehicleValues = getUserEnteredVehicleValues(scanner, plateau);
        boolean validPosition = checkPositionWithinPlateau(vehicleValues, plateau );
-       if(!validPosition){
+       while(!validPosition){
            System.out.println("You cannot please your vehicle here.  Please try again.");
            vehicleValues = getUserEnteredVehicleValues(scanner, plateau);
+           validPosition = checkPositionWithinPlateau(vehicleValues, plateau );
        }
         return generateVehicleFromUserInput(vehicleValues);
     }
