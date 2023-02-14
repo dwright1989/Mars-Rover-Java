@@ -159,5 +159,14 @@ public class RectanglePlateauTest {
         rectanglePlateau.printGrid();
     }
 
+    /*
+    Generating Obstacles
+     */
+    @Test
+    public void canGenerateRockAndAddToGrid(){
+        rectanglePlateau.generateObstacles(1);
+        rectanglePlateau.printGrid();
+    }
+
 
 }

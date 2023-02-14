@@ -1,6 +1,8 @@
 package com.techreturners.Plateaus;
 
 import com.techreturners.Enums.Orientation;
+import com.techreturners.Obstacles.Obstacle;
+import com.techreturners.Obstacles.Rock;
 import com.techreturners.Vehicles.Vehicle;
 
 public class RectanglePlateau extends Plateau {
@@ -10,7 +12,7 @@ public class RectanglePlateau extends Plateau {
         super.setGrid(new Object[x][y]);
     }
 
-    public boolean addVehicle(Vehicle vehicle) {
+    public void addVehicle(Vehicle vehicle) {
         boolean added = false;
         int x = vehicle.getPosition()[0];
         int y = vehicle.getPosition()[1];
@@ -27,7 +29,6 @@ public class RectanglePlateau extends Plateau {
             // E.g. spans over two squares - check the direction and add vehicle on additional array elements
             // So size == 2 at pos [0,1] and direction N would also be added to [1,1]
         }
-        return added;
     }
 
     public void removeVehicle(int[] pos, int size) {
@@ -66,4 +67,31 @@ public class RectanglePlateau extends Plateau {
         }
         return vehicle.getPosition()[0] + "" + vehicle.getPosition()[1] + "" + vehicle.getDirection();
     }
+
+    @Override
+    public void addObstacle(Obstacle obstacle) {
+        int x = obstacle.getPosition()[0];
+        int y = obstacle.getPosition()[1];
+        super.getGrid()[x][y] = obstacle;
+    }
+
+    @Override
+    public void generateObstacles(int numberOfObstacles) {
+        Object[][] grid = super.getGrid();
+        int xLength = grid.length-1;
+        int yLength = grid[0].length-1;
+        boolean validValue = false;
+        int randomXPosition = 0;
+        int randomYPosition = 0;
+        while(!validValue){
+            randomXPosition = (int) (Math.random() * xLength);
+            randomYPosition = (int) (Math.random() * yLength);
+            if(grid[randomXPosition][randomYPosition]==null){
+                validValue = true;
+            }
+        }
+        Rock rock = new Rock(randomXPosition, randomYPosition);
+        addObstacle(rock);
+    }
+
 }

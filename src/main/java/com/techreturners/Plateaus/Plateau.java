@@ -2,6 +2,8 @@ package com.techreturners.Plateaus;
 
 import com.techreturners.Enums.Colour;
 import com.techreturners.Enums.Unicode;
+import com.techreturners.Obstacles.Obstacle;
+import com.techreturners.Obstacles.Rock;
 import com.techreturners.Vehicles.Rover;
 import com.techreturners.Vehicles.Vehicle;
 
@@ -36,20 +38,25 @@ public abstract class Plateau {
                     System.out.print(Colour.GRID_COLOUR);
                     System.out.print("|");
                     System.out.print(Colour.ARROW_COLOUR);
-                    switch (((Rover) gridPosition).getDirection()) {
-                        case N -> {
-                            System.out.print(" " + Unicode.NORTH_ARROW + " ");
+                    if(gridPosition instanceof Vehicle){
+                        switch (((Vehicle) gridPosition).getDirection()) {
+                            case N -> {
+                                System.out.print(" " + Unicode.NORTH_ARROW + " ");
+                            }
+                            case E -> {
+                                System.out.print(" " + Unicode.EAST_ARROW + " ");
+                            }
+                            case S -> {
+                                System.out.print(" " + Unicode.SOUTH_ARROW + " ");
+                            }
+                            case W -> {
+                                System.out.print(" " + Unicode.WEST_ARROW + " ");
+                            }
                         }
-                        case E -> {
-                            System.out.print(" " + Unicode.EAST_ARROW + " ");
-                        }
-                        case S -> {
-                            System.out.print(" " + Unicode.SOUTH_ARROW + " ");
-                        }
-                        case W -> {
-                            System.out.print(" " + Unicode.WEST_ARROW + " ");
-                        }
+                    }else{
+                        System.out.print(" " + Unicode.ROCK + " ");
                     }
+
                     System.out.print(Colour.RESET);
                     System.out.print(Colour.GRID_COLOUR);
                     System.out.print("|");
@@ -67,5 +74,9 @@ public abstract class Plateau {
 
 
     public abstract String moveVehicle(String movements, Vehicle vehicle);
-    public abstract boolean addVehicle(Vehicle vehicle);
+    public abstract void addVehicle(Vehicle vehicle);
+
+    public abstract void addObstacle(Obstacle obstacle);
+
+    public abstract void generateObstacles(int numberOfObstacles);
 }

@@ -5,7 +5,9 @@ public enum Unicode {
     NORTH_ARROW("↑"),
     EAST_ARROW("→"),
     SOUTH_ARROW("↓"),
-    WEST_ARROW("←");
+    WEST_ARROW("←"),
+
+    ROCK("¤");
     private final String code;
 
     Unicode(String code) {
