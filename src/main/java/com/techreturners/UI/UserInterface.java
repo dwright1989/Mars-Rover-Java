@@ -179,8 +179,8 @@ public class UserInterface {
      */
     private boolean getUserInputJourney(Scanner scanner, Plateau plateau, Vehicle vehicle) {
         String movementValues = getUserEnteredMovementValues(scanner);
-        Map<String, Boolean> results = plateau.moveVehicle(movementValues, vehicle);
-        return results.get("1");
+        Object[] results = plateau.moveVehicle(movementValues, vehicle);
+        return (boolean) results[1];
     }
 
     private String getUserEnteredMovementValues(Scanner scanner) {

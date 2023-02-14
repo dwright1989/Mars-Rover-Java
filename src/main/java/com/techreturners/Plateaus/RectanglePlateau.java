@@ -54,7 +54,7 @@ public class RectanglePlateau extends Plateau {
     }
 
     @Override
-    public Map<String, Boolean> moveVehicle(String movements, Vehicle vehicle) {
+    public Object[] moveVehicle(String movements, Vehicle vehicle) {
         boolean fullJourneySuccessful = false;
         movements = movements.toUpperCase();
         outerloop:
@@ -76,9 +76,7 @@ public class RectanglePlateau extends Plateau {
                 case 'L', 'R' -> vehicle.changeDirection(Orientation.valueOf(String.valueOf(input)));
             }
         }
-        Map<String, Boolean> results = new HashMap<>();
-        results.put("1", fullJourneySuccessful);
-        return results;
+        return new Object[]{vehicle.getPosition()[0] + "" + vehicle.getPosition()[1] + "" + vehicle.getDirection(), fullJourneySuccessful};
     }
 
     @Override

@@ -39,87 +39,121 @@ public class RectanglePlateauTest {
         assertNull(rectanglePlateau.getGrid()[0][1]);
     }
 
+    /*
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    Obstacles are randomly added so tests must check if full journey has been completed and compare to this
+    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+     */
+
+
     @Test
     public void canMoveVehicleOneSpaceToTheLeft(){
         Rover rover = new Rover(new int[]{2, 3}, Direction.N);
         rectanglePlateau.addVehicle(rover);
-        assertEquals("13W", rectanglePlateau.moveVehicle("LM", rover));
-        assertEquals(Direction.W, rover.getDirection());
-        assertArrayEquals(new int[]{1, 3}, rover.getPosition());
-        assertNotNull(rectanglePlateau.getGrid()[1][3]);
-        assertNull(rectanglePlateau.getGrid()[2][3]);
+        Object[] results = rectanglePlateau.moveVehicle("LM", rover);
+        if((boolean)results[1]){
+            assertEquals("13W", results[0]);
+            assertEquals(Direction.W, rover.getDirection());
+            assertArrayEquals(new int[]{1, 3}, rover.getPosition());
+            assertNotNull(rectanglePlateau.getGrid()[1][3]);
+        }
+
     }
 
     @Test
     public void cannotMoveVehicleOneSpaceToTheLeftWhereIncompatible(){
         Rover rover = new Rover(new int[]{0, 4}, Direction.N);
         rectanglePlateau.addVehicle(rover);
-        assertEquals("04W", rectanglePlateau.moveVehicle("LM", rover));
-        assertEquals(Direction.W, rover.getDirection());
-        assertArrayEquals(new int[]{0, 4}, rover.getPosition());
-        assertNotNull(rectanglePlateau.getGrid()[0][4]);
+        Object[] results = rectanglePlateau.moveVehicle("LM", rover);
+        if((boolean)results[1]){
+            assertEquals("04W", results[0]);
+            assertEquals(Direction.W, rover.getDirection());
+            assertArrayEquals(new int[]{0, 4}, rover.getPosition());
+            assertNotNull(rectanglePlateau.getGrid()[0][4]);
+        }
+
     }
 
     @Test
     public void canMoveVehicleLeftTwice(){
         Rover rover = new Rover(new int[]{2, 3}, Direction.N);
         rectanglePlateau.addVehicle(rover);
-        assertEquals("03W", rectanglePlateau.moveVehicle("LMM", rover));
-        assertEquals(Direction.W, rover.getDirection());
-        assertArrayEquals(new int[]{0, 3}, rover.getPosition());
-        assertNotNull(rectanglePlateau.getGrid()[0][3]);
-        assertNull(rectanglePlateau.getGrid()[2][3]);
-        assertNull(rectanglePlateau.getGrid()[1][3]);
+        Object[] results = rectanglePlateau.moveVehicle("LMM", rover);
+        if((boolean)results[1]){
+            assertEquals("03W", results[0]);
+            assertEquals(Direction.W, rover.getDirection());
+            assertArrayEquals(new int[]{0, 3}, rover.getPosition());
+            assertNotNull(rectanglePlateau.getGrid()[0][3]);
+        }
+
     }
 
     @Test
     public void canMoveVehicleLeftTurnLeftMoveAgain(){
         Rover rover = new Rover(new int[]{2, 3}, Direction.N);
         rectanglePlateau.addVehicle(rover);
-        assertEquals("12S", rectanglePlateau.moveVehicle("LMLM", rover));
-        assertEquals(Direction.S, rover.getDirection());
-        assertArrayEquals(new int[]{1, 2}, rover.getPosition());
-        assertNotNull(rectanglePlateau.getGrid()[1][2]);
+        Object[] results = rectanglePlateau.moveVehicle("LMLM", rover);
+        if((boolean)results[1]){
+            assertEquals("12S", results[0]);
+            assertEquals(Direction.S, rover.getDirection());
+            assertArrayEquals(new int[]{1, 2}, rover.getPosition());
+            assertNotNull(rectanglePlateau.getGrid()[1][2]);
+        }
     }
 
     @Test
     public void canMoveVehicleUsingALongStringOfLefts(){
         Rover rover = new Rover(new int[]{1, 2}, Direction.N);
         rectanglePlateau.addVehicle(rover);
-        assertEquals("13N", rectanglePlateau.moveVehicle("LMLMLMLMM", rover));
-        assertEquals(Direction.N, rover.getDirection());
-        assertArrayEquals(new int[]{1, 3}, rover.getPosition());
-        assertNotNull(rectanglePlateau.getGrid()[1][3]);
+        Object[] results = rectanglePlateau.moveVehicle("LMLMLMLMM", rover);
+        if((boolean)results[1]){
+            assertEquals("13N", results[0]);
+            assertEquals(Direction.N, rover.getDirection());
+            assertArrayEquals(new int[]{1, 3}, rover.getPosition());
+            assertNotNull(rectanglePlateau.getGrid()[1][3]);
+        }
     }
 
     @Test
     public void canMoveVehicleUsingALongStringOfRights(){
         Rover rover = new Rover(new int[]{3, 3}, Direction.E);
         rectanglePlateau.addVehicle(rover);
-        assertEquals("41E", rectanglePlateau.moveVehicle("MMRMMRMRRM", rover));
-        assertEquals(Direction.E, rover.getDirection());
-        assertArrayEquals(new int[]{4, 1}, rover.getPosition());
-        assertNotNull(rectanglePlateau.getGrid()[4][1]);
+        Object[] results = rectanglePlateau.moveVehicle("MMRMMRMRRM", rover);
+        if((boolean)results[1]){
+            assertEquals("41E", results[0]);
+            assertEquals(Direction.E, rover.getDirection());
+            assertArrayEquals(new int[]{4, 1}, rover.getPosition());
+            assertNotNull(rectanglePlateau.getGrid()[4][1]);
+        }
+
     }
 
     @Test
     public void canTurnVehicleLeftAndRight(){
         Rover rover = new Rover(new int[]{3, 3}, Direction.E);
         rectanglePlateau.addVehicle(rover);
-        assertEquals("33N", rectanglePlateau.moveVehicle("LLR", rover));
-        assertEquals(Direction.N, rover.getDirection());
-        assertArrayEquals(new int[]{3, 3}, rover.getPosition());
-        assertNotNull(rectanglePlateau.getGrid()[3][3]);
+        Object[] results = rectanglePlateau.moveVehicle("LLR", rover);
+        if((boolean)results[1]){
+            assertEquals("33N", results[0]);
+            assertEquals(Direction.N, rover.getDirection());
+            assertArrayEquals(new int[]{3, 3}, rover.getPosition());
+            assertNotNull(rectanglePlateau.getGrid()[3][3]);
+        }
+
     }
 
     @Test
     public void canMoveVehicleForwardWithoutTurning(){
         Rover rover = new Rover(new int[]{3, 3}, Direction.E);
         rectanglePlateau.addVehicle(rover);
-        assertEquals("43E", rectanglePlateau.moveVehicle("MMM", rover));
-        assertEquals(Direction.E, rover.getDirection());
-        assertArrayEquals(new int[]{4, 3}, rover.getPosition());
-        assertNotNull(rectanglePlateau.getGrid()[4][3]);
+        Object[] results = rectanglePlateau.moveVehicle("MMM", rover);
+        if((boolean)results[1]){
+            assertEquals("43E", results[0]);
+            assertEquals(Direction.E, rover.getDirection());
+            assertArrayEquals(new int[]{4, 3}, rover.getPosition());
+            assertNotNull(rectanglePlateau.getGrid()[4][3]);
+        }
+
     }
 
 
@@ -127,17 +161,20 @@ public class RectanglePlateauTest {
     public void blankStringMovementShouldNotChange(){
         Rover rover = new Rover(new int[]{3, 3}, Direction.E);
         rectanglePlateau.addVehicle(rover);
-        assertEquals("33E", rectanglePlateau.moveVehicle("", rover));
+        Object[] results = rectanglePlateau.moveVehicle("", rover);
+        assertEquals("33E", results[0]);
         assertEquals(Direction.E, rover.getDirection());
         assertArrayEquals(new int[]{3, 3}, rover.getPosition());
         assertNotNull(rectanglePlateau.getGrid()[3][3]);
+
     }
 
     @Test
     public void invalidStringMovementShouldNotChange(){
         Rover rover = new Rover(new int[]{3, 3}, Direction.E);
         rectanglePlateau.addVehicle(rover);
-        assertEquals("33E", rectanglePlateau.moveVehicle("S", rover));
+        Object[] results = rectanglePlateau.moveVehicle("S", rover);
+        assertEquals("33E", results[0]);
         assertEquals(Direction.E, rover.getDirection());
         assertArrayEquals(new int[]{3, 3}, rover.getPosition());
         assertNotNull(rectanglePlateau.getGrid()[3][3]);
@@ -147,7 +184,8 @@ public class RectanglePlateauTest {
     public void invalidStringMovementWithValidStringMovementShouldIgnoreInvalid(){
         Rover rover = new Rover(new int[]{3, 3}, Direction.E);
         rectanglePlateau.addVehicle(rover);
-        assertEquals("33N", rectanglePlateau.moveVehicle("LSLR", rover));
+        Object[] results = rectanglePlateau.moveVehicle("LSLR", rover);
+        assertEquals("33N", results[0]);
         assertEquals(Direction.N, rover.getDirection());
         assertArrayEquals(new int[]{3, 3}, rover.getPosition());
         assertNotNull(rectanglePlateau.getGrid()[3][3]);

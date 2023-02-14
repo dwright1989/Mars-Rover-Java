@@ -74,7 +74,7 @@ public abstract class Plateau {
     }
 
 
-    public abstract Map<String, Boolean> moveVehicle(String movements, Vehicle vehicle);
+    public abstract Object[] moveVehicle(String movements, Vehicle vehicle);
     public abstract void addVehicle(Vehicle vehicle);
 
     public abstract void addObstacle(Obstacle obstacle);
