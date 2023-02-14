@@ -2,6 +2,7 @@ package com.techreturners.UI;
 
 import com.techreturners.Enums.Colour;
 import com.techreturners.Enums.Direction;
+import com.techreturners.Enums.Unicode;
 import com.techreturners.Planets.Planet;
 import com.techreturners.Plateaus.Plateau;
 import com.techreturners.Plateaus.RectanglePlateau;
@@ -23,13 +24,14 @@ public class UserInterface {
      */
     User user;
     Planet mars;
+
     public UserInterface(){
         startApplication();
     }
 
     public void startApplication(){
         Scanner scanner = new Scanner(System.in);
-        System.out.print(Colour.BLUE);
+        System.out.print(Colour.MAIN_TEXT_COLOUR);
         System.out.println("\nWelcome to the planet explorer.  What is your name?");
         String name = scanner.next();
         while(!isValidName(name)){
@@ -54,13 +56,35 @@ public class UserInterface {
         Vehicle vehicle = createVehicleAndAddToPlateau(scanner, plateau);
         plateau.addVehicle(vehicle);
         plateau.printGrid();
-        System.out.print(Colour.BLUE);
+        int[] originalPosition = vehicle.getPosition();
+        Direction originalDirection = vehicle.getDirection();
+        System.out.print(Colour.MAIN_TEXT_COLOUR);
         System.out.println("Your vehicle has been placed on the grid");
+        System.out.println("Your vehicle is represented as the following:");
+        System.out.print("North: ");
+        System.out.print(Colour.ARROW_COLOUR);
+        System.out.println(Unicode.NORTH_ARROW);
+        System.out.print(Colour.MAIN_TEXT_COLOUR);
+        System.out.print("East:  ");
+        System.out.print(Colour.ARROW_COLOUR);
+        System.out.println(Unicode.EAST_ARROW);
+        System.out.print(Colour.MAIN_TEXT_COLOUR);
+        System.out.print("South: ");
+        System.out.print(Colour.ARROW_COLOUR);
+        System.out.println(Unicode.SOUTH_ARROW);
+        System.out.print(Colour.MAIN_TEXT_COLOUR);
+        System.out.print("West:  ");
+        System.out.print(Colour.ARROW_COLOUR);
+        System.out.println(Unicode.WEST_ARROW);
+        System.out.print(Colour.MAIN_TEXT_COLOUR);
         getUserInputJourney(scanner, plateau, vehicle);
         System.out.println("Your vehicle has now completed it's journey.");
         System.out.println("Your vehicle has been moved as far in it's journey as possible without moving off the edge of the plateau!");
-        System.out.println("See the results below. Goodbye.");
+        System.out.println("See the results below.");
         plateau.printGrid();
+        System.out.println();
+        System.out.print(Colour.SECONDARY_COLOUR);
+        System.out.println("Your vehicle has been moved from: " + originalPosition[0] + "" + originalPosition[1] +  "" + originalDirection + " to: " + vehicle.getPosition()[0] + "" + vehicle.getPosition()[1] + "" + vehicle.getDirection());
         scanner.close();
     }
 
@@ -76,7 +100,7 @@ public class UserInterface {
     }
 
     private String getUserEnteredPlateauSize(Scanner scanner) {
-        System.out.print(Colour.BLUE);
+        System.out.print(Colour.MAIN_TEXT_COLOUR);
         System.out.println("Enter a plateau size in the form XY.  Where X is the length of the horizontal coordinates and Y is the length of the vertical coordinates. E.g. 54");
         String plateauValues = scanner.next();
         while(!isValidPlateauCoordinates(plateauValues)){
@@ -91,7 +115,7 @@ public class UserInterface {
         int yCoord = Character.digit(plateauValues.charAt(1),10);
         RectanglePlateau plateau = new RectanglePlateau(xCoord, yCoord); // TODO upgrade if/when different shapes of plateaus available
         mars.addPlateau(plateau);
-        System.out.print(Colour.BLUE);
+        System.out.print(Colour.MAIN_TEXT_COLOUR);
         System.out.println("Thank you, " + user.getName() + "!  Have a look at the grid of the plateau below.");
         return plateau;
     }
@@ -105,7 +129,7 @@ public class UserInterface {
     }
 
     private String getUserEnteredVehicleValues(Scanner scanner, Plateau plateau) {
-        System.out.print(Colour.BLUE);
+        System.out.print(Colour.MAIN_TEXT_COLOUR);
         System.out.println("Where would you like to place your vehicle?  Enter two coordinates followed by a direction e.g. 11N for x coordinate 1, y coordinate 1 and facing North.");
         String vehicleValues = scanner.next();
         while(!isValidVehiclesValues(vehicleValues, plateau.getGrid())){
@@ -131,20 +155,24 @@ public class UserInterface {
     }
 
     private String getUserEnteredMovementValues(Scanner scanner) {
-        System.out.print(Colour.BLUE);
+        System.out.print(Colour.MAIN_TEXT_COLOUR);
         System.out.println("Enter your journey for your vehicle");
         System.out.println("Valid moves include: ");
+        System.out.print(Colour.SECONDARY_COLOUR);
         System.out.println("L - turn left");
         System.out.println("R - turn right");
         System.out.println("M - move forward");
+        System.out.print(Colour.MAIN_TEXT_COLOUR);
         System.out.println("For example, LMM will turn the vehicle left and move forward 2x.");
         String movementValues = scanner.next();
         while(!isValidMovementValues(movementValues)){
             System.out.println("Please enter a valid selection.");
             System.out.println("Valid moves include: ");
+            System.out.print(Colour.SECONDARY_COLOUR);
             System.out.println("L - turn left");
             System.out.println("R - turn right");
             System.out.println("M - move forward");
+            System.out.print(Colour.MAIN_TEXT_COLOUR);
             System.out.println("For example, LMM will turn the vehicle left and move forward 2x.");
             movementValues = scanner.next();
         }

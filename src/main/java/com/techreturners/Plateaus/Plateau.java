@@ -23,19 +23,19 @@ public abstract class Plateau {
         int yLength = grid[0].length;
         System.out.println();
         for(int j=1; j<=yLength; j++){
-            System.out.print(Colour.YELLOW);
+            System.out.print(Colour.MAIN_TEXT_COLOUR);
             System.out.print(yLength-j + " ");
             System.out.print(Colour.RESET);
             for (Object[] objects : grid) {
                 Object gridPosition = objects[yLength - j];
                 if (gridPosition == null) {
-                    System.out.print(Colour.RED_BRIGHT);
+                    System.out.print(Colour.GRID_COLOUR);
                     System.out.print("|   |");
                     System.out.print(Colour.RESET);
                 } else {
-                    System.out.print(Colour.RED_BRIGHT);
+                    System.out.print(Colour.GRID_COLOUR);
                     System.out.print("|");
-                    System.out.print(Colour.BLUE);
+                    System.out.print(Colour.ARROW_COLOUR);
                     switch (((Rover) gridPosition).getDirection()) {
                         case N -> {
                             System.out.print(" " + Unicode.NORTH_ARROW + " ");
@@ -51,14 +51,14 @@ public abstract class Plateau {
                         }
                     }
                     System.out.print(Colour.RESET);
-                    System.out.print(Colour.RED_BRIGHT);
+                    System.out.print(Colour.GRID_COLOUR);
                     System.out.print("|");
                 }
             }
             System.out.println();
         }
         for(int i=0; i<xLength; i++){
-            System.out.print(Colour.YELLOW);
+            System.out.print(Colour.MAIN_TEXT_COLOUR);
             System.out.print("    " + i);
             System.out.print(Colour.RESET);
         }
