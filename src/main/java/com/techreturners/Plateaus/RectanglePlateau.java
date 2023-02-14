@@ -13,7 +13,7 @@ public class RectanglePlateau extends Plateau {
 
     public RectanglePlateau(int x,int y) {
         super.setGrid(new Object[x][y]);
-        generateObstacles(1);
+        generateObstacles();
     }
 
     public void addVehicle(Vehicle vehicle) {
@@ -87,22 +87,41 @@ public class RectanglePlateau extends Plateau {
     }
 
     @Override
-    public void generateObstacles(int numberOfObstacles) {
+    public void generateObstacles() {
+        int number;
+        int x = getGrid().length;
+        int y = getGrid()[0].length;
+        if(x<=2 || y<=2){
+            number = 0;
+        }
+        else if(x<=4 || y<=4){
+            number = 1;
+        }else{
+            int totalSquares = x*y;
+            number = (int) (totalSquares/10);
+        }
+        addObstacles(number);
+    }
+
+    @Override
+    public void addObstacles(int number) {
         Object[][] grid = super.getGrid();
         int xLength = grid.length-1;
         int yLength = grid[0].length-1;
-        boolean validValue = false;
-        int randomXPosition = 0;
-        int randomYPosition = 0;
-        while(!validValue){
-            randomXPosition = (int) (Math.random() * xLength);
-            randomYPosition = (int) (Math.random() * yLength);
-            if(grid[randomXPosition][randomYPosition]==null){
-                validValue = true;
+        for(int i = 0; i<number; i++){
+            boolean validValue = false;
+            int randomXPosition = 0;
+            int randomYPosition = 0;
+            while(!validValue){
+                randomXPosition = (int) (Math.random() * xLength);
+                randomYPosition = (int) (Math.random() * yLength);
+                if(grid[randomXPosition][randomYPosition]==null){
+                    validValue = true;
+                }
             }
+            Rock rock = new Rock(randomXPosition, randomYPosition);
+            addObstacle(rock);
         }
-        Rock rock = new Rock(randomXPosition, randomYPosition);
-        addObstacle(rock);
     }
 
 }

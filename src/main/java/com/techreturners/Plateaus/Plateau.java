@@ -5,8 +5,6 @@ import com.techreturners.Enums.Unicode;
 import com.techreturners.Obstacles.Obstacle;
 import com.techreturners.Vehicles.Vehicle;
 
-import java.util.Map;
-
 public abstract class Plateau {
     private Object[][] grid;
 
@@ -78,6 +76,6 @@ public abstract class Plateau {
     public abstract void addVehicle(Vehicle vehicle);
 
     public abstract void addObstacle(Obstacle obstacle);
-
-    public abstract void generateObstacles(int numberOfObstacles);
+    public abstract void addObstacles(int number);
+    public abstract void generateObstacles();
 }

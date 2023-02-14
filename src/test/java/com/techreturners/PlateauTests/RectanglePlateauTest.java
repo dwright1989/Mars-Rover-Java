@@ -2,7 +2,7 @@ package com.techreturners.PlateauTests;
 import com.techreturners.Enums.Direction;
 import com.techreturners.Plateaus.RectanglePlateau;
 import com.techreturners.Vehicles.Rover;
-import org.junit.Ignore;
+
 import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;
@@ -203,7 +203,6 @@ public class RectanglePlateauTest {
      */
     @Test
     public void canGenerateRockAndAddToGrid(){
-        rectanglePlateau.generateObstacles(1);
         rectanglePlateau.printGrid();
     }
 
