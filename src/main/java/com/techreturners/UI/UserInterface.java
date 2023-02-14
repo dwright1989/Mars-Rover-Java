@@ -85,6 +85,7 @@ public class UserInterface {
         System.out.println();
         System.out.print(Colour.SECONDARY_COLOUR);
         System.out.println("Your vehicle has been moved from: " + originalPosition[0] + "" + originalPosition[1] +  "" + originalDirection + " to: " + vehicle.getPosition()[0] + "" + vehicle.getPosition()[1] + "" + vehicle.getDirection());
+
         scanner.close();
     }
 
@@ -125,7 +126,25 @@ public class UserInterface {
      */
     private Vehicle createVehicleAndAddToPlateau(Scanner scanner, Plateau plateau) {
        String vehicleValues = getUserEnteredVehicleValues(scanner, plateau);
+       boolean validPosition = checkPositionWithinPlateau(vehicleValues, plateau );
+       if(!validPosition){
+           System.out.println("These values are outwith the scope of the plateau.  Please try again.");
+           vehicleValues = getUserEnteredVehicleValues(scanner, plateau);
+       }
         return generateVehicleFromUserInput(vehicleValues);
+    }
+
+    private boolean checkPositionWithinPlateau(String vehicleValues, Plateau plateau) {
+        boolean isValid = false;
+        int xPos = Integer.parseInt(vehicleValues.substring(0, 1));
+        int yPos = Integer.parseInt(vehicleValues.substring(1, 2));
+        int lengthOne = plateau.getGrid().length;
+        int lengthTwo = plateau.getGrid()[0].length;
+        if(xPos<lengthOne && xPos>=0 && yPos<lengthTwo && yPos>=0){ // TODO Method may need to be updated if/when obstacles added
+            isValid = true;
+        }
+
+        return isValid;
     }
 
     private String getUserEnteredVehicleValues(Scanner scanner, Plateau plateau) {

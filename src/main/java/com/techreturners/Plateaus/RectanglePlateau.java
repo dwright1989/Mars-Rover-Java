@@ -17,7 +17,7 @@ public class RectanglePlateau extends Plateau {
         // Check can add vehicle here
         int xLength = super.getGrid().length;
         int yLength = super.getGrid()[0].length;
-        if(x<=xLength && y<=yLength){
+        if(x<xLength && y<yLength){
             super.getGrid()[x][y] = vehicle;
             added = true;
         }
