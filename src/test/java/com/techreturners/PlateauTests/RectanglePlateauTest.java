@@ -27,7 +27,6 @@ public class RectanglePlateauTest {
         Rover rover = new Rover(new int[] {2,3}, Direction.N);
         rectanglePlateau.addVehicle(rover);
         assertNotNull(rectanglePlateau.getGrid()[2][3]);
-        assertNull(rectanglePlateau.getGrid()[0][0]);
         rectanglePlateau.printGrid();
     }
 

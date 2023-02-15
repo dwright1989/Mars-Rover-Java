@@ -10,7 +10,6 @@ import com.techreturners.User;
 import com.techreturners.Vehicles.Vehicle;
 import com.techreturners.Vehicles.Rover;
 
-import java.util.Map;
 import java.util.Scanner;
 import static com.techreturners.UI.UserInterfaceValidation.*;
 

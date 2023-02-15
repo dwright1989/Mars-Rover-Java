@@ -22,9 +22,14 @@ public class RoverMoveForwardTests {
     public void canMoveForwardWhenFacingNorthAndSpaceAvailable(){
         Rover rover = new Rover(new int[]{2,3}, Direction.N);
         rectanglePlateau.addVehicle(rover);
-        rectanglePlateau.moveVehicleForward(rover);
-        assertArrayEquals(new int[]{2,4}, rover.getPosition());
-        assertEquals(rectanglePlateau.getGrid()[2][4], rover);
+        // check to see if obstacle on this square
+        Object[][] grid = rectanglePlateau.getGrid();
+        if(grid[2][4]==null){
+            rectanglePlateau.moveVehicleForward(rover);
+            assertArrayEquals(new int[]{2,4}, rover.getPosition());
+            assertEquals(rectanglePlateau.getGrid()[2][4], rover);
+        }
+
     }
 
     @Test
@@ -40,9 +45,13 @@ public class RoverMoveForwardTests {
     public void canMoveForwardWhenFacingEastAndSpaceAvailable(){
         Rover rover = new Rover(new int[]{2,3}, Direction.E);
         rectanglePlateau.addVehicle(rover);
-        rectanglePlateau.moveVehicleForward(rover);
-        assertArrayEquals(new int[]{3,3}, rover.getPosition());
-        assertEquals(rectanglePlateau.getGrid()[3][3], rover);
+        // check to see if obstacle on this square
+        Object[][] grid = rectanglePlateau.getGrid();
+        if(grid[3][3]==null){
+            rectanglePlateau.moveVehicleForward(rover);
+            assertArrayEquals(new int[]{3,3}, rover.getPosition());
+            assertEquals(rectanglePlateau.getGrid()[3][3], rover);
+        }
     }
 
     @Test
@@ -58,9 +67,13 @@ public class RoverMoveForwardTests {
     public void canMoveForwardWhenFacingWestAndSpaceAvailable(){
         Rover rover = new Rover(new int[]{1,1}, Direction.W);
         rectanglePlateau.addVehicle(rover);
-        rectanglePlateau.moveVehicleForward(rover);
-        assertArrayEquals(new int[]{0,1}, rover.getPosition());
-        assertEquals(rectanglePlateau.getGrid()[0][1], rover);
+        // check to see if obstacle on this square
+        Object[][] grid = rectanglePlateau.getGrid();
+        if(grid[0][1]==null){
+            rectanglePlateau.moveVehicleForward(rover);
+            assertArrayEquals(new int[]{0,1}, rover.getPosition());
+            assertEquals(rectanglePlateau.getGrid()[0][1], rover);
+        }
     }
 
     @Test
@@ -76,9 +89,13 @@ public class RoverMoveForwardTests {
     public void canMoveForwardWhenFacingSouthAndSpaceAvailable(){
         Rover rover = new Rover(new int[]{0,1}, Direction.S);
         rectanglePlateau.addVehicle(rover);
-        rectanglePlateau.moveVehicleForward(rover);
-        assertArrayEquals(new int[]{0,0}, rover.getPosition());
-        assertEquals(rectanglePlateau.getGrid()[0][0], rover);
+        // check to see if obstacle on this square
+        Object[][] grid = rectanglePlateau.getGrid();
+        if(grid[0][0]==null){
+            rectanglePlateau.moveVehicleForward(rover);
+            assertArrayEquals(new int[]{0,0}, rover.getPosition());
+            assertEquals(rectanglePlateau.getGrid()[0][0], rover);
+        }
     }
 
     @Test

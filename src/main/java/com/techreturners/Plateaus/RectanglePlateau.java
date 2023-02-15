@@ -5,9 +5,6 @@ import com.techreturners.Obstacles.Obstacle;
 import com.techreturners.Obstacles.Rock;
 import com.techreturners.Vehicles.Vehicle;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class RectanglePlateau extends Plateau {
 
 
@@ -17,7 +14,6 @@ public class RectanglePlateau extends Plateau {
     }
 
     public void addVehicle(Vehicle vehicle) {
-        boolean added = false;
         int x = vehicle.getPosition()[0];
         int y = vehicle.getPosition()[1];
         Object[][] grid = super.getGrid();
@@ -25,13 +21,12 @@ public class RectanglePlateau extends Plateau {
         int yLength = grid[0].length;
         if(x<xLength && y<yLength && grid[x][y]==null){
             grid[x][y] = vehicle;
-            added = true;
         }
 
         if(vehicle.getSize()>1){
             // Additional logic can be added here if/when larger vehicles implemented
             // E.g. spans over two squares - check the direction and add vehicle on additional array elements
-            // So size == 2 at pos [0,1] and direction N would also be added to [1,1]
+            // So size == 2 at pos [0,1] and direction N would also be added to [1,1].
         }
 
     }
