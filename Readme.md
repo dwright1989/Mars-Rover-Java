@@ -16,10 +16,14 @@ The user can run this project from the "Main" class/method.  This will start com
 <em>Assumptions</em>  - must be of the form XY (where x is the coordinate of the horizontal line (width) and y is the coordinate of the vertical line (height)).
 Letters are not accepted and the values must be between 1 and 9
 
+![marRover1](https://github.com/dwright1989/Mars-Rover-Java/assets/94061495/2acf9cc2-9e45-451f-96be-6306d73b0f8a)
+
 **Step 4** - User enters the coordinates for their vehicle <br/>
 <em>Assumptions</em>  - vehicle takes up 1 square.  Coordinates must be of the form XYD where X is the x coordinate, Y is the y coordinate and D is the direction (N, E, S or W).  
 This is not case sensitive. Vehicles cannot be placed outwith the plateau and cannot be placed on a square which contains an obstacle.
 If a user tries to do either of these, an error message will tell them this is not allowed and they will need to enter a new position.
+
+![marrover2](https://github.com/dwright1989/Mars-Rover-Java/assets/94061495/bfe31c53-d316-4ca0-94b5-15d555cc69ee)
 
 **Step 5** - The user can now add instructions to move their vehicle around the plateau.  <br/>
 <em>Assumptions</em>  - The user must type in a series of instructions on the one line. 
@@ -27,6 +31,9 @@ The user is given a choice of "L" for turning left, "R" for turning right and "M
 This is not case sensitive however numbers, special characters and any values outwith "L" "R" or "M" will be ignored.  White space is also ignored. 
 If the journey entered tries to move off of the plateau or over an obstacle, the vehicle will be moved UP UNTIL THIS POINT and the user will be told that the full journey was not completed for this reason. 
 The user is then informed the original and new position of their vehicle and the application closes. 
+
+
+![marrover3](https://github.com/dwright1989/Mars-Rover-Java/assets/94061495/319a5dd0-9324-4418-bd84-e8f5a760e122)
 
 Obstacles are added randomly when the plateau is created.  The number is based on the size of the plateau. 
 ## Future Considerations
